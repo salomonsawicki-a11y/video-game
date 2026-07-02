@@ -69,5 +69,6 @@ models loaded).
 
 The user is bringing in real JoJo models by auto-rigging them through Mixamo
 and converting to `.glb` (fbx2gltf npm package works), then giving each stand
-per-attack choreography. The World (NULL HOUR) is done; remaining stands still
-use primitive bodies.
+per-attack choreography. The World (NULL HOUR) is done; Hierophant Green has
+been prepped for Mixamo and will come back rigged for JADE ORACLE; the other
+stands still use primitive bodies.

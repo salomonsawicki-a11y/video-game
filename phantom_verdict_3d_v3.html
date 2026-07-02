@@ -5744,9 +5744,10 @@ function update(){
           const dive=Math.min(p/0.4,1);
           tx=P.x+fx*2.0; tz=P.z+fz*2.0; ty=Math.max(0.25,3.4-3.1*dive);
         }
-      }else{                   // VOID TICK — glide out front and loom over stopped time
-        tx=P.x+fx*2.4; tz=P.z+fz*2.4;
-        ty=1.05+Math.sin(frame*0.045)*0.15;
+      }else{                   // VOID TICK — surge forward with the throw, then loom
+        const e=190-timeStopT,t0=e<12?0:Math.min((e-12)/16,1),th=t0*t0*(3-2*t0);
+        tx=P.x+fx*(0.9+1.5*th); tz=P.z+fz*(0.9+1.5*th);
+        ty=0.55+(0.5+Math.sin(frame*0.045)*0.15)*th;
       }
       const mrate=(P.gesture&&P.gesture.t>0)?0.3:0.1; // slow, weightless glide in stopped time
       m.position.x=lerp(m.position.x,tx,mrate);
@@ -5913,19 +5914,30 @@ function update(){
         RightForeArm:[0,0,1.35*ext*R],LeftForeArm:[0,0,-1.35*ext*L],
         Spine1:[0.12*ext,(R?-1:1)*0.4*ext,0],
         RightUpLeg:[0,0,(R?-1:1)*0.3*ext],LeftUpLeg:[0,0,(L?-1:1)*0.3*ext]};
-    }else if(P.si===1&&timeStopT>0){ // VOID TICK — time is stopped; loom, arms thrown wide
-      let w=Math.min(1,(190-timeStopT)/16,timeStopT/22);
-      w=w*w*(3-2*w); // ease in and out of the pose
-      const breathe=Math.sin(frame*0.045)*0.05*w;
-      tPy=0.42*w+breathe; tRx=-0.12*w; tRz=0;
-      // per-side offsets cancel the block stance's asymmetry so the
-      // spread reads as one clean symmetric silhouette
-      P.phantomPose={
-        RightArm:[-1.25*w,0,-0.10*w],LeftArm:[-1.25*w,0,-0.30*w],
-        RightForeArm:[0,0,1.25*w],LeftForeArm:[0,0,-1.25*w],
-        Head:[-0.62*w,0,0],Spine1:[-0.20*w,0,0],
-        RightUpLeg:[0,0,0.10*w],LeftUpLeg:[0,0,-0.30*w],
-        RightLeg:[0,0,0.25*w],LeftLeg:[0,0,-0.10*w]};
+    }else if(P.si===1&&timeStopT>0){ // VOID TICK — coil, throw the arms wide, hold
+      const e=190-timeStopT,f=Math.min(1,timeStopT/20); // f eases everything out at the end
+      const wind=Math.min(e/12,1);                      // arms draw across the chest
+      const t0=e<12?0:Math.min((e-12)/16,1);
+      const th=t0*t0*(3-2*t0);                          // the throw, eased
+      const ov=1+0.18*Math.sin(th*Math.PI);             // swing past the mark, settle back
+      const wa=wind*(1-th)*f,sa=th*f;                   // wind-up / spread weights
+      const breathe=Math.sin(frame*0.045)*0.05*sa;
+      tPy=-0.10*wa+0.42*sa+breathe; tRx=0.10*wa-0.12*sa; tRz=0;
+      const W={ // coiled: arms crossed, chin down, knees gathering
+        RightArm:[0.55,0,-0.55],LeftArm:[0.55,0,0.25],
+        RightForeArm:[0,0,-0.45],LeftForeArm:[0,0,0.45],
+        Head:[0.28,0,0],Spine1:[0.18,0,0],
+        RightUpLeg:[0,0,0.20],LeftUpLeg:[0,0,-0.20],
+        RightLeg:[0,0,-0.15],LeftLeg:[0,0,-0.25]};
+      const S={ // thrown wide — block stance's asymmetry cancelled per side
+        RightArm:[-1.25*ov,0,-0.10],LeftArm:[-1.25*ov,0,-0.30],
+        RightForeArm:[0,0,1.25*ov],LeftForeArm:[0,0,-1.25*ov],
+        Head:[-0.62,0,0],Spine1:[-0.20,0,0],
+        RightUpLeg:[0,0,0.10],LeftUpLeg:[0,0,-0.30],
+        RightLeg:[0,0,0.25],LeftLeg:[0,0,-0.10]};
+      const B={};
+      for(const k in W)B[k]=W[k].map((v,i)=>v*wa+S[k][i]*sa);
+      P.phantomPose=B;
     }
     cm.holder.rotation.x=lerp(cm.holder.rotation.x,tRx,0.30);
     cm.holder.rotation.z=lerp(cm.holder.rotation.z,tRz,0.30);
@@ -6029,16 +6041,22 @@ function loop(){
         // single-clip rig (only a punch): hold a still ready stance while idle
         if(want==='idle'&&cm.map.idle===cm.map.atk){action.time=0;action.paused=true;}
       }
-      // layer the technique's limb pose on top of the clip
-      if(P.phantomPose&&cm.bones){
+      // layer the technique's limb pose on top of the clip, chasing the target
+      // pose so transitions between branches (punch <-> stop <-> none) never snap
+      if((P.phantomPose||cm.poseCur)&&cm.bones){
+        const tgt=P.phantomPose||{};
+        const cur=cm.poseCur=cm.poseCur||{};
+        for(const k in tgt)if(!cur[k])cur[k]=[0,0,0];
         const bak={};
-        for(const k in P.phantomPose){
+        for(const k in cur){
+          const t=tgt[k]||[0,0,0],c=cur[k];
+          c[0]=lerp(c[0],t[0],0.4);c[1]=lerp(c[1],t[1],0.4);c[2]=lerp(c[2],t[2],0.4);
+          if(!tgt[k]&&Math.abs(c[0])+Math.abs(c[1])+Math.abs(c[2])<0.003){delete cur[k];continue;}
           const b=cm.bones[k];if(!b)continue;
           bak[k]=b.quaternion.clone();
-          const r=P.phantomPose[k];
-          if(r[0])b.rotateX(r[0]);
-          if(r[1])b.rotateY(r[1]);
-          if(r[2])b.rotateZ(r[2]);
+          if(c[0])b.rotateX(c[0]);
+          if(c[1])b.rotateY(c[1]);
+          if(c[2])b.rotateZ(c[2]);
         }
         cm.poseRestore=bak;
       }
