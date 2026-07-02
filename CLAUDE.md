@@ -13,7 +13,7 @@ comes from.
 |---|---------------|------------------------------|--------------------|
 | 0 | CRIMSON HERALD| King Crimson (Diavolo, P5)   | time erasure, Epitaph foresight |
 | 1 | NULL HOUR     | The World (DIO, P3)          | time stop, knife fan, steamroller drop (embedded rigged GLB, The World model) |
-| 2 | JADE ORACLE   | Hierophant Green (Kakyoin, P3)| Emerald Splash, puppet control |
+| 2 | JADE ORACLE   | Hierophant Green (Kakyoin, P3)| Emerald Splash, puppet control (embedded rigged GLB, mesh `Mesh_3781.rip`) |
 | 3 | SILVER ZEPHYR | Silver Chariot (Polnareff, P3)| fencing, armor purge, afterimages |
 | 4 | GILDED MENDER | Crazy Diamond (Josuke, P4)   | restoration brawler (embedded rigged GLB, mesh `crd_CrazyD1`) |
 | 5 | VELVET SEAM   | Stone Free (Jolyne, P6)      | string techniques |
@@ -33,9 +33,10 @@ stand's battle cry.
 - Stand bodies are procedural primitives (`standMeshes`, with `armL/armR` +
   elbow pivots) unless a custom `.glb` is loaded for that stand
   (`customModels[]`, drag-and-drop or file picker on the menu screen).
-- GILDED MENDER (`MENDER_GLB_B64`, "punch combo" clip) and NULL HOUR
-  (`NULLHOUR_GLB_B64`, The World with a "body block" clip held as a paused
-  idle stance) ship as embedded base64 Mixamo-rigged GLBs. Their techniques
+- GILDED MENDER (`MENDER_GLB_B64`, "punch combo" clip), NULL HOUR
+  (`NULLHOUR_GLB_B64`, The World) and JADE ORACLE (`JADE_GLB_B64`,
+  Hierophant Green) ship as embedded base64 Mixamo-rigged GLBs; the latter
+  two hold a "body block" clip as a paused idle stance. Their techniques
   are animated procedurally: per-art whole-body gestures (`P.gesture`) +
   bone-level limb poses (`P.phantomPose`) applied additively after
   `mixer.update()` and restored from a per-frame snapshot (`cm.poseRestore`)
@@ -69,6 +70,7 @@ models loaded).
 
 The user is bringing in real JoJo models by auto-rigging them through Mixamo
 and converting to `.glb` (fbx2gltf npm package works), then giving each stand
-per-attack choreography. The World (NULL HOUR) is done; Hierophant Green has
-been prepped for Mixamo and will come back rigged for JADE ORACLE; the other
-stands still use primitive bodies.
+per-attack choreography. The World (NULL HOUR) and Hierophant Green
+(JADE ORACLE) are done; the other stands still use primitive bodies.
+JADE ORACLE's special sets `P.gesture={slot:5}` for its cast pose — slot 5
+is the special, not an art.
