@@ -133,7 +133,7 @@
         <div class="body">
           <span class="key">WASD</span> move &nbsp; <span class="key">SPACE</span> dash &nbsp; <span class="key">J</span>/<span class="key">CLICK</span> barrage<br>
           arts on <span class="key">L</span> <span class="key">U</span> <span class="key">I</span> <span class="key">O</span> <span class="key">P</span> &nbsp; <span class="key">K</span> special &nbsp; <span class="key">1</span>–<span class="key">8</span>/<span class="key">Q</span> swap phantom<br>
-          <span class="key">RIGHT-DRAG</span> or <span class="key">Z</span><span class="key">C</span><span class="key">R</span><span class="key">F</span> orbit camera &nbsp; <span class="key">SCROLL</span> zoom<br>
+          <span class="key">HOLD + DRAG</span> or <span class="key">Z</span><span class="key">C</span><span class="key">R</span><span class="key">F</span> orbit camera &nbsp; <span class="key">+</span>/<span class="key">−</span> zoom (scroll works too)<br>
           <span style="color:#9b8cc4">Phone:</span> drag left to move, right to orbit; round buttons cast arts.
         </div>
       </details>
@@ -4407,7 +4407,7 @@ function updateTexts(){
 let state='menu';
 let P,enemies,shots,ebullets,waltzQ,rollers,snares,traps,mirages,walls,hist;
 let keys={},mouse={x:0,y:0,down:false};
-let camYaw=0,camPitch=0.95,camDist=28,camDrag=null,camTouch=null;
+let camYaw=0,camPitch=0.95,camDist=28,camDrag=null,camTouch=null,lmbStart=null;
 let wave,score,combo,comboT,shake,timeStopT,frame,bestCombo,hitstop=0;
 let touchMove=null,btn={atk:false};
 let training=false;
@@ -4545,10 +4545,22 @@ cnv.addEventListener('pointerdown',e=>{
     e.preventDefault();
     camDrag={id:e.pointerId,x:e.clientX,y:e.clientY};
     try{cnv.setPointerCapture(e.pointerId);}catch(_){}
-  } else if(e.button===0&&state==='play'){mouse.down=true;}
+  } else if(e.button===0&&state==='play'){
+    mouse.down=true;
+    lmbStart={id:e.pointerId,x:e.clientX,y:e.clientY};
+  }
 });
 cnv.addEventListener('pointermove',e=>{
   mouse.x=e.clientX;mouse.y=e.clientY;
+  // holding the cursor down and moving it steers the camera;
+  // a stationary press keeps attacking as before
+  if(lmbStart&&e.pointerId===lmbStart.id&&!camDrag){
+    if(Math.hypot(e.clientX-lmbStart.x,e.clientY-lmbStart.y)>8){
+      mouse.down=false;
+      camDrag={id:e.pointerId,x:e.clientX,y:e.clientY};
+      try{cnv.setPointerCapture(e.pointerId);}catch(_){}
+    }
+  }
   if(camDrag&&e.pointerId===camDrag.id){
     camYaw-=(e.clientX-camDrag.x)*0.006;
     camPitch=clamp(camPitch+(e.clientY-camDrag.y)*0.004,0.35,1.35);
@@ -4560,11 +4572,12 @@ function endPointer(e){
     camDrag=null;
     try{cnv.releasePointerCapture(e.pointerId);}catch(_){}
   }
+  if(lmbStart&&e.pointerId===lmbStart.id)lmbStart=null;
   if(e.button===0)mouse.down=false;
 }
 cnv.addEventListener('pointerup',endPointer);
 cnv.addEventListener('pointercancel',endPointer);
-addEventListener('blur',()=>{mouse.down=false;camDrag=null;});
+addEventListener('blur',()=>{mouse.down=false;camDrag=null;lmbStart=null;});
 
 cnv.addEventListener('touchstart',e=>{for(const t of e.changedTouches){
   if(t.clientX<W/2)touchMove={id:t.identifier,sx:t.clientX,sy:t.clientY,x:t.clientX,y:t.clientY};
@@ -5316,6 +5329,8 @@ function update(){
   if(keys['c'])camYaw-=0.045;
   if(keys['r'])camPitch=clamp(camPitch-0.02,0.35,1.35);
   if(keys['f'])camPitch=clamp(camPitch+0.02,0.35,1.35);
+  if(keys['+']||keys['='])camDist=clamp(camDist-0.5,15,42);
+  if(keys['-']||keys['_'])camDist=clamp(camDist+0.5,15,42);
 
   // camera-relative movement
   let inF=0,inR=0;

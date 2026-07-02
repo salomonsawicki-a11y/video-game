@@ -60,8 +60,10 @@ stand's battle cry.
 Serve locally (`python3 -m http.server`) and drive with Playwright
 (chromium at `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`):
 click `#trainBtn` for the dojo, keys `1-8` switch stands, `J`/click = basic,
-`L U I O P` = arts, `K` = special, mouse wheel zooms. Verify animation work
-with screenshots (`#mdlStatus` shows when the embedded model loaded).
+`L U I O P` = arts, `K` = special, `+`/`-` (or wheel) zooms, hold-drag with
+the left button orbits the camera (a stationary hold keeps attacking).
+Verify animation work with screenshots (`#mdlStatus` shows when the embedded
+models loaded).
 
 ## Ongoing direction
 
