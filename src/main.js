@@ -1,3 +1,3 @@
-// Entry point. Phase 1: boot the migrated arena game.
-// Later phases add the Morioh exploration mode beside it.
+// Entry point: the migrated arena game + the Morioh exploration mode.
 import './game/arena.js';
+import './explore/explore.js';

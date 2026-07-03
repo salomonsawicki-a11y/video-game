@@ -53,6 +53,10 @@
   .tagline{font-size:12.5px;letter-spacing:1px;color:#b9aee0;max-width:520px;margin:0 auto 22px;line-height:1.6;}
   .btnrow{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;align-items:center;margin-bottom:26px;}
   #trainBtn{margin-top:0;}
+  #exploreBtn{pointer-events:auto;cursor:pointer;font-family:inherit;font-size:14px;letter-spacing:3px;font-style:italic;
+    background:#10241c;color:#8fe8c0;border:3px solid #8fe8c0;padding:12px 26px;margin-top:0;
+    box-shadow:4px 4px 0 rgba(0,0,0,.7);transform:skewX(-6deg);}
+  #exploreBtn:active{transform:skewX(-6deg) translate(3px,3px);box-shadow:2px 2px 0 rgba(0,0,0,.7);}
   .panels{width:100%;max-width:680px;margin:0 auto;text-align:left;}
   .panel{border:2px solid rgba(155,140,196,.35);background:rgba(0,0,0,.25);margin-bottom:10px;}
   .panel>summary{cursor:pointer;list-style:none;padding:11px 16px;font-size:12px;letter-spacing:2.5px;
@@ -126,6 +130,7 @@
     <div class="btnrow">
       <button id="startBtn">BEGIN THE TRIAL</button>
       <button id="trainBtn">TRAINING ROOM</button>
+      <button id="exploreBtn">EXPLORE MORIOH</button>
     </div>
     <div class="panels">
       <details class="panel">

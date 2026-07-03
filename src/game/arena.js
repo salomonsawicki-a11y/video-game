@@ -4,6 +4,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { EffectComposer, RenderPass, EffectPass, Effect, BloomEffect, SMAAEffect } from 'postprocessing';
 import { renderer } from '../core/renderer.js';
+import { modes } from '../core/modes.js';
 
 addEventListener('error',ev=>{try{const el=document.getElementById('mdlStatus');if(el)el.textContent='⚠ '+(ev.message||'script error');}catch(_){}});
 
@@ -2427,6 +2428,13 @@ function gameOver(){
 
 function loop(){
   const dt=clock.getDelta();
+  // when another mode owns the frame (e.g. Morioh exploration), delegate
+  if(modes.current!=='arena'){
+    const tick=modes.ticks[modes.current];
+    if(tick)tick(Math.min(dt,0.1));
+    requestAnimationFrame(loop);
+    return;
+  }
   if(state==='play'){
     if(hitstop>0)hitstop--; // ASB-style impact freeze
     else update();
