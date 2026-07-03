@@ -8,6 +8,7 @@ import { renderer } from '../core/renderer.js';
 import { modes } from '../core/modes.js';
 import { createTerrain } from './terrain.js';
 import { getGroundHeight } from './heightfield.js';
+import { KIT, buildPiece } from './kit.js';
 
 let scene, camera, composer, terrain, inited = false;
 
@@ -39,6 +40,20 @@ function init() {
 
   terrain = createTerrain();
   scene.add(terrain.group);
+
+  // ?kit — lay the whole building kit out in a grid for eyeballing
+  if (new URLSearchParams(location.search).has('kit')) {
+    const ids = Object.keys(KIT);
+    const cols = 6, gap = 16, ox = -40, oz = 60;
+    ids.forEach((id, i) => {
+      const { group } = buildPiece(id);
+      const x = ox + (i % cols) * gap, z = oz + Math.floor(i / cols) * gap;
+      group.position.set(x, getGroundHeight(x, z), z);
+      scene.add(group);
+    });
+    fly.pos.set(ox + 40, getGroundHeight(ox + 40, oz + 55) + 9, oz + 55);
+    fly.yaw = Math.PI; fly.pitch = -0.25;
+  }
 
   composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera));
