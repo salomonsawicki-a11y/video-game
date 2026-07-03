@@ -23,11 +23,32 @@ comes from.
 "MENDER'S WRATH" barrage = stand rush (DORARARA); the `cry` field is each
 stand's battle cry.
 
-## Architecture (all inside the one HTML file)
+## Architecture (PBR migration, Phase 1 complete)
 
-- three.js r128 core + GLTFLoader are **inlined** — the game runs fully
-  offline; never add CDN references.
-- Main game script is one big IIFE near the end of the file.
+The game is being migrated to full photorealism (PBR) with a walkable Morioh
+exploration mode. New structure (serve the repo root, open `index.html`):
+
+- `index.html` — entry + UI shell + import map (`three`, `three/addons/`,
+  `postprocessing` → `vendor/`). No CDN; fully offline from a static folder.
+- `src/core/renderer.js` — THE shared renderer: sRGB output, AgX tonemapping,
+  PCFSoft shadows. Never create a second renderer.
+- `src/game/arena.js` — the fight game (ported from the legacy file).
+  PBR conventions: `MeshStandardMaterial` everywhere (toon/gradient/outline
+  shells are retired), physical light intensities, IBL via
+  `scene.environment` (RoomEnvironment placeholder until the Morioh HDR sky),
+  post = pmndrs `postprocessing` composer (bloom + SMAA + `PVGrade` custom
+  effect carrying the CA/vignette/time-stop/erase grades).
+- `assets/models/*.glb` — the rigged phantom bodies (fetched, no longer
+  base64-embedded). `vendor/` — three r185 ESM + addons + postprocessing.
+- `phantom_verdict_3d_v3.html` — the frozen legacy single-file build; do not
+  edit it, it's reference only.
+- Morioh exploration roadmap: (2) terrain greybox→photoreal, (3) building
+  kit, (4) data-driven town layout, (5) third-person character controller +
+  collision, (6) HDR sky/atmosphere/water, (7) props/instancing/perf.
+
+## Legacy notes (still apply to gameplay code in arena.js)
+
+- Main game script was one big IIFE; it is now one big ES module.
 - `STANDS[]` — stand defs (stats, art names/cooldowns). `ARTS[][]` — one
   function per art, indexed [standIndex][slot]. `special()` — K specials.
 - Stand bodies are procedural primitives (`standMeshes`, with `armL/armR` +
@@ -58,8 +79,10 @@ stand's battle cry.
 
 ## Testing
 
-Serve locally (`python3 -m http.server`) and drive with Playwright
-(chromium at `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`):
+Serve the repo root (`python3 -m http.server`) and open `index.html`; drive
+with Playwright (chromium at `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`).
+Take SMALL JPEG screenshots (quality ~55, viewport ≤960px) — full-size PNGs
+have blown the request limit before. Game controls:
 click `#trainBtn` for the dojo, keys `1-8` switch stands, `J`/click = basic,
 `L U I O P` = arts, `K` = special, `+`/`-` (or wheel) zooms, hold-drag with
 the left button orbits the camera (a stationary hold keeps attacking).

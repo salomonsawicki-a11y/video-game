@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>PHANTOM VERDICT 3D — III</title>
+<style>
+  :root{--ink:#0d0a18;--paper:#efe6d8;--scarlet:#e0354b;--gold:#f2b630;--emerald:#3ddc6a;--silver:#c9d4e4;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;overflow:hidden;background:var(--ink);font-family:Georgia,'Times New Roman',serif;}
+  #wrap{position:relative;width:100%;height:100%;}
+  canvas{display:block;touch-action:none;}
+  #fxText{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+  .ft{position:absolute;font-style:italic;font-weight:bold;white-space:nowrap;transform:translate(-50%,-50%);
+      text-shadow:2px 2px 0 #0c0916,-2px 2px 0 #0c0916,2px -2px 0 #0c0916,-2px -2px 0 #0c0916;}
+  #hud{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;
+       padding:14px 18px;pointer-events:none;color:var(--paper);}
+  .panel{background:rgba(13,10,24,.82);border:3px solid var(--paper);padding:8px 14px;box-shadow:6px 6px 0 rgba(0,0,0,.55);}
+  #standName{font-size:22px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;font-style:italic;}
+  #standDesc{font-size:12px;opacity:.85;letter-spacing:1px;}
+  #hpbarOuter{width:250px;height:14px;border:2px solid var(--paper);margin-top:6px;background:#000;}
+  #hpbar{height:100%;width:100%;background:linear-gradient(90deg,#e0354b,#ff7a6b);transition:width .15s;}
+  #spOuter{width:250px;height:9px;border:2px solid var(--paper);margin-top:4px;background:#000;}
+  #spbar{height:100%;width:0%;background:linear-gradient(90deg,#f2b630,#ffe28a);transition:width .1s;}
+  #cdRow{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px;font-size:9.5px;letter-spacing:.4px;max-width:270px;}
+  .cd{border:2px solid var(--paper);padding:1px 5px;background:#000;opacity:.45;}
+  .cd.ready{opacity:1;background:#2a2440;}
+  #stats{text-align:right;font-size:14px;letter-spacing:1px;}
+  #combo{color:var(--gold);font-style:italic;}
+  #tint{position:absolute;inset:0;pointer-events:none;background:transparent;transition:background .25s;}
+  #lines{position:absolute;inset:0;pointer-events:none;}
+  #tone{position:absolute;inset:0;pointer-events:none;opacity:.06;mix-blend-mode:overlay;
+    background-image:radial-gradient(circle,#fff 1px,transparent 1.4px);background-size:7px 7px;}
+  #overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:rgba(13,10,24,.95);color:var(--paper);text-align:center;padding:20px;z-index:10;overflow:auto;}
+  #overlay h1{font-size:min(8vw,52px);letter-spacing:6px;font-style:italic;transform:skewX(-6deg);
+    text-shadow:5px 5px 0 var(--scarlet),10px 10px 0 rgba(0,0,0,.6);margin-bottom:6px;}
+  #overlay h2{font-size:15px;letter-spacing:3px;color:var(--gold);margin-bottom:14px;font-weight:normal;}
+  .ctl{font-size:11.5px;line-height:1.7;max-width:760px;margin-bottom:16px;text-align:left;}
+  .key{display:inline-block;border:2px solid var(--paper);padding:0 5px;margin:0 1px;font-family:monospace;background:#000;font-size:10.5px;}
+  #startBtn{pointer-events:auto;cursor:pointer;font-family:inherit;font-size:20px;letter-spacing:4px;font-style:italic;
+    background:var(--scarlet);color:var(--paper);border:3px solid var(--paper);padding:12px 40px;
+    box-shadow:6px 6px 0 rgba(0,0,0,.7);transform:skewX(-6deg);}
+  #startBtn:active{transform:skewX(-6deg) translate(3px,3px);box-shadow:3px 3px 0 rgba(0,0,0,.7);}
+  select{font-family:inherit;background:#000;color:var(--paper);border:2px solid var(--paper);padding:3px 6px;font-size:11px;margin:2px;pointer-events:auto;}
+  .filebtn2{display:inline-block;cursor:pointer;background:var(--scarlet);color:var(--paper);border:2px solid var(--paper);padding:4px 12px;font-size:11px;letter-spacing:1px;pointer-events:auto;}
+  .filebtn2 input{display:none;}
+  .minibtn{pointer-events:auto;cursor:pointer;font-family:inherit;background:#2a2440;color:var(--paper);border:2px solid var(--paper);padding:3px 8px;font-size:10px;}
+  #trainBtn{pointer-events:auto;cursor:pointer;font-family:inherit;font-size:14px;letter-spacing:3px;font-style:italic;
+    background:#2a2440;color:var(--paper);border:3px solid var(--paper);padding:10px 28px;margin-top:14px;
+    box-shadow:5px 5px 0 rgba(0,0,0,.7);transform:skewX(-6deg);}
+  #trainBtn:active{transform:skewX(-6deg) translate(3px,3px);box-shadow:2px 2px 0 rgba(0,0,0,.7);}
+  .tagline{font-size:12.5px;letter-spacing:1px;color:#b9aee0;max-width:520px;margin:0 auto 22px;line-height:1.6;}
+  .btnrow{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;align-items:center;margin-bottom:26px;}
+  #trainBtn{margin-top:0;}
+  .panels{width:100%;max-width:680px;margin:0 auto;text-align:left;}
+  .panel{border:2px solid rgba(155,140,196,.35);background:rgba(0,0,0,.25);margin-bottom:10px;}
+  .panel>summary{cursor:pointer;list-style:none;padding:11px 16px;font-size:12px;letter-spacing:2.5px;
+    color:var(--gold);font-weight:bold;display:flex;align-items:center;justify-content:space-between;user-select:none;}
+  .panel>summary::-webkit-details-marker{display:none;}
+  .panel>summary::after{content:'+';font-size:18px;color:#9b8cc4;}
+  .panel[open]>summary::after{content:'\2013';}
+  .panel>summary:hover{background:rgba(155,140,196,.12);}
+  .panel .body{padding:4px 16px 14px;font-size:11.5px;line-height:1.75;}
+  .roster-row{padding:5px 0;border-top:1px solid rgba(155,140,196,.15);}
+  .roster-row:first-child{border-top:none;}
+  .part-tag{display:inline-block;font-size:9.5px;letter-spacing:1.5px;color:#9b8cc4;margin:8px 0 2px;}
+  .mv{display:block;margin:8px 0;}
+  #exitTrain{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:5;display:none;
+    cursor:pointer;font-family:inherit;font-size:13px;letter-spacing:2px;font-style:italic;
+    background:rgba(13,10,24,.85);color:var(--paper);border:2px solid var(--paper);padding:7px 18px;}
+  #touchUI{position:absolute;inset:0;pointer-events:none;display:none;}
+  .tbtn{position:absolute;pointer-events:auto;width:56px;height:56px;border-radius:50%;
+    border:3px solid var(--paper);background:rgba(13,10,24,.6);color:var(--paper);
+    font-family:inherit;font-size:11px;font-weight:bold;letter-spacing:1px;}
+  .abtn{position:absolute;pointer-events:auto;width:42px;height:42px;border-radius:50%;
+    border:2px solid var(--paper);background:rgba(61,220,106,.4);color:var(--paper);
+    font-family:monospace;font-size:13px;font-weight:bold;}
+  #btnAtk{right:20px;bottom:90px;background:rgba(224,53,75,.5);}
+  #btnSp{right:88px;bottom:60px;background:rgba(242,182,48,.5);}
+  #btnSw{right:20px;bottom:172px;background:rgba(201,212,228,.4);}
+  #btnDash{right:20px;bottom:22px;background:rgba(239,230,216,.28);}
+  #btnA0{right:152px;bottom:200px;}#btnA1{right:152px;bottom:152px;}
+  #btnA2{right:152px;bottom:104px;}#btnA3{right:152px;bottom:56px;}
+  #btnA4{right:152px;bottom:8px;}
+  @media (pointer:coarse){#touchUI{display:block;}}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="hud" style="display:none;">
+    <div class="panel">
+      <div id="standName">● CRIMSON HERALD</div>
+      <div id="standDesc"></div>
+      <div id="hpbarOuter"><div id="hpbar"></div></div>
+      <div id="spOuter"><div id="spbar"></div></div>
+      <div id="cdRow">
+        <span class="cd" id="cdA0">L</span><span class="cd" id="cdA1">U</span>
+        <span class="cd" id="cdA2">I</span><span class="cd" id="cdA3">O</span>
+        <span class="cd" id="cdA4">P</span>
+        <span class="cd" id="cdDash">SPC DASH</span><span class="cd" id="cdSp">K SPECIAL</span>
+      </div>
+    </div>
+    <div class="panel" id="stats">
+      WAVE <span id="wave">1</span><br>SCORE <span id="score">0</span><br><span id="combo"></span>
+    </div>
+  </div>
+  <div id="fxText"></div>
+  <div id="tint"></div>
+  <canvas id="lines"></canvas>
+  <div id="tone"></div>
+  <button id="exitTrain">EXIT TRAINING (ESC)</button>
+  <div id="touchUI">
+    <button class="tbtn" id="btnAtk">ATK</button>
+    <button class="tbtn" id="btnSp">SPEC</button>
+    <button class="tbtn" id="btnSw">SWAP</button>
+    <button class="tbtn" id="btnDash">DASH</button>
+    <button class="abtn" id="btnA0">L</button><button class="abtn" id="btnA1">U</button>
+    <button class="abtn" id="btnA2">I</button><button class="abtn" id="btnA3">O</button>
+    <button class="abtn" id="btnA4">P</button>
+  </div>
+  <div id="overlay">
+    <h1>PHANTOM VERDICT</h1>
+    <h2>3D CHAPTER III — THE FULL ARSENAL</h2>
+    <p class="tagline">Eight phantoms. One arena. Survive the trial — barrage, dash, and unleash each phantom's signature arts against the encroaching dark.</p>
+    <div class="btnrow">
+      <button id="startBtn">BEGIN THE TRIAL</button>
+      <button id="trainBtn">TRAINING ROOM</button>
+    </div>
+    <div class="panels">
+      <details class="panel">
+        <summary>CONTROLS</summary>
+        <div class="body">
+          <span class="key">WASD</span> move &nbsp; <span class="key">SPACE</span> dash &nbsp; <span class="key">J</span>/<span class="key">CLICK</span> barrage<br>
+          arts on <span class="key">L</span> <span class="key">U</span> <span class="key">I</span> <span class="key">O</span> <span class="key">P</span> &nbsp; <span class="key">K</span> special &nbsp; <span class="key">1</span>–<span class="key">8</span>/<span class="key">Q</span> swap phantom<br>
+          <span class="key">HOLD + DRAG</span> or <span class="key">Z</span><span class="key">C</span><span class="key">R</span><span class="key">F</span> orbit camera &nbsp; <span class="key">+</span>/<span class="key">−</span> zoom (scroll works too)<br>
+          <span style="color:#9b8cc4">Phone:</span> drag left to move, right to orbit; round buttons cast arts.
+        </div>
+      </details>
+      <details class="panel">
+        <summary>PHANTOM ROSTER</summary>
+        <div class="body">
+          <span class="part-tag">— PART 3 —</span>
+          <div class="roster-row">[2] ■ <b style="color:var(--gold)">NULL HOUR</b> — armored time-stopper · KNUCKLE DOWN · STEAMROLLER DROP · KNIFE FAN · LIFE SIPHON · HEAVEN DROP · <b>K:</b> VOID TICK</div>
+          <div class="roster-row">[3] ▲ <b style="color:var(--emerald)">JADE ORACLE</b> — serpent puppeteer · EMERALD TEMPEST · TENDRIL SNARE · PUPPET STRINGS · AMBUSH NET · COIL CONSTRICT · <b>K:</b> SERPENT COIL</div>
+          <div class="roster-row">[4] ◆ <b style="color:var(--silver)">SILVER ZEPHYR</b> — flashing-blade knight · THOUSAND PIERCE · ARMOR PURGE · BLADE SHOT · AFTERIMAGE LEGION · RIPOSTE STANCE · <b>K:</b> BLADE WALTZ</div>
+          <span class="part-tag">— PART 4 —</span>
+          <div class="roster-row">[5] ✚ <b style="color:#ff6fa5">GILDED MENDER</b> — restoration brawler · MEND SELF · RETURN TO SENDER · WALL OF MENDING · FUSE TO EARTH · METEOR LUNGE · <b>K:</b> MENDER'S WRATH</div>
+          <span class="part-tag">— PART 5 —</span>
+          <div class="roster-row">[1] ● <b style="color:var(--scarlet)">CRIMSON HERALD</b> — emperor of erased time · SEVERING CHOP · TIME ERASURE · EPITAPH · IMPALING HAND · BLINDSIDE · <b>K:</b> ERASED RESULT</div>
+          <span class="part-tag">— PART 6 —</span>
+          <div class="roster-row">[6] ✶ <b style="color:#35c5e8">VELVET SEAM</b> — unraveling string · STRING SHOT · GRAPPLE LINE · WIRE NET · PUPPET WIRE · UNRAVEL · <b>K:</b> THOUSAND THREADS</div>
+          <span class="part-tag">— PART 7 —</span>
+          <div class="roster-row">[7] ⧖ <b style="color:#cc6b3f">HIGH NOON</b> — duelist of the turning hands · DEAD-EYE SHOT · <b>SIX SECONDS BACK</b> (full rewind: your place, your wounds, theirs too) · FAN FIRE · DUELIST'S CODE · SUNDOWN MARK · <b>K:</b> LAST LIGHT</div>
+          <span class="part-tag">— PART 8 —</span>
+          <div class="roster-row">[8] ◉ <b style="color:#5aa8ff">PLUNDER TIDE</b> — bubble thief · BUBBLE VOLLEY · PLUNDER · BUBBLE WARD · SOAP SLICK · BURST FINALE · <b>K:</b> TOTAL PLUNDER</div>
+          <div style="margin-top:10px;color:#9b8cc4;font-size:11px;">Every phantom fights with a universal J-barrage.</div>
+        </div>
+      </details>
+      <details class="panel">
+        <summary>STAGE</summary>
+        <div class="body">
+          Pick the battlefield:
+          <select id="stageSel"></select>
+          <span id="stageDesc" style="color:#9b8cc4"></span>
+        </div>
+      </details>
+      <details class="panel">
+        <summary>CUSTOM MODELS <span style="color:#9b8cc4;font-weight:normal;letter-spacing:1px;">· beta</span></summary>
+        <div class="body">
+          Replace any phantom's body with a rigged <b>.glb</b> model — original or properly licensed designs, built via Mixamo + Blender and previewable in Phantom Forge.<br>
+          <span class="mv">
+            <select id="mdlStand"></select>
+            <label class="filebtn2">LOAD .GLB<input type="file" id="mdlFile" accept=".glb"></label>
+          </span>
+          <span id="mdlStatus" style="color:var(--emerald)"></span>
+          <span id="mdlClips" style="display:none;"><br>idle clip <select id="mdlIdle"></select> attack clip <select id="mdlAtk"></select> <button class="minibtn" id="mdlRemove">REMOVE MODEL</button></span>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/three.module.js",
+    "three/addons/": "./vendor/three/addons/",
+    "postprocessing": "./vendor/postprocessing/postprocessing.js"
+  }
+}
+</script>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
