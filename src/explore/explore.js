@@ -9,6 +9,7 @@ import { modes } from '../core/modes.js';
 import { createTerrain } from './terrain.js';
 import { getGroundHeight } from './heightfield.js';
 import { KIT, buildPiece } from './kit.js';
+import { buildTown, spawns } from './town.js';
 
 let scene, camera, composer, terrain, inited = false;
 
@@ -41,6 +42,13 @@ function init() {
   terrain = createTerrain();
   scene.add(terrain.group);
 
+  // assemble the town from the layout config (async; terrain is already live)
+  buildTown().then(({ group }) => {
+    scene.add(group);
+    const s0 = spawns.town_center;
+    if (s0) { fly.pos.copy(s0.pos).add(new THREE.Vector3(-Math.sin(s0.yaw) * 14, 8, -Math.cos(s0.yaw) * 14)); fly.yaw = s0.yaw; }
+  }).catch(e => console.error('town build failed', e));
+
   // ?kit — lay the whole building kit out in a grid for eyeballing
   if (new URLSearchParams(location.search).has('kit')) {
     const ids = Object.keys(KIT);
@@ -69,7 +77,18 @@ function init() {
   });
 
   // fly-cam input (debug; Phase 5 replaces with pointer-lock controller)
-  addEventListener('keydown', e => { keys[e.key.toLowerCase()] = true; if (e.key === 'Escape' && modes.current === 'explore') exitExplore(); });
+  addEventListener('keydown', e => {
+    keys[e.key.toLowerCase()] = true;
+    if (modes.current !== 'explore') return;
+    if (e.key === 'Escape') exitExplore();
+    const names = Object.keys(spawns);
+    const n = parseInt(e.key, 10);
+    if (n >= 1 && n <= names.length) {
+      const sp = spawns[names[n - 1]];
+      fly.pos.copy(sp.pos).add(new THREE.Vector3(-Math.sin(sp.yaw) * 12, 7, -Math.cos(sp.yaw) * 12));
+      fly.yaw = sp.yaw; fly.pitch = -0.3;
+    }
+  });
   addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
   const cnv = renderer.domElement;
   cnv.addEventListener('pointerdown', e => { if (modes.current === 'explore') { looking = true; lastX = e.clientX; lastY = e.clientY; } });
@@ -102,8 +121,18 @@ function tick(dt) {
   composer.render();
 }
 
+let hintEl = null;
 export function enterExplore() {
   if (!inited) init();
+  if (!hintEl) {
+    hintEl = document.createElement('div');
+    hintEl.style.cssText = 'position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:30;'
+      + 'font:11px monospace;letter-spacing:1px;color:#dfe8f0;background:rgba(10,14,20,.55);'
+      + 'padding:6px 14px;border:1px solid rgba(160,190,210,.35);pointer-events:none';
+    hintEl.textContent = 'WASD fly · Q/E down/up · SHIFT fast · drag to look · 1-5 teleport (town/shops/harbor/park/overlook) · ESC menu';
+    document.body.appendChild(hintEl);
+  }
+  hintEl.style.display = 'block';
   document.getElementById('overlay').style.display = 'none';
   document.getElementById('hud').style.display = 'none';
   modes.enter('explore');
@@ -112,6 +141,7 @@ export function enterExplore() {
 function exitExplore() {
   modes.enter('arena');
   document.getElementById('overlay').style.display = 'flex';
+  if (hintEl) hintEl.style.display = 'none';
 }
 
 modes.register('explore', tick);

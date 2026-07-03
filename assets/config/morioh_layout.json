@@ -1,0 +1,1301 @@
+{
+ "name": "Morioh-cho",
+ "version": 1,
+ "spawns": {
+  "town_center": {
+   "pos": [
+    6,
+    52
+   ],
+   "yaw": 170
+  },
+  "shopping_street": {
+   "pos": [
+    8,
+    100
+   ],
+   "yaw": 180
+  },
+  "harbor": {
+   "pos": [
+    40,
+    158
+   ],
+   "yaw": -60
+  },
+  "park": {
+   "pos": [
+    -80,
+    76
+   ],
+   "yaw": 90
+  },
+  "hilltop_overlook": {
+   "pos": [
+    -150,
+    -152
+   ],
+   "yaw": 35
+  }
+ },
+ "roads": [
+  {
+   "name": "main_street",
+   "width": 6,
+   "points": [
+    [
+     8,
+     -96
+    ],
+    [
+     6,
+     -40
+    ],
+    [
+     4,
+     20
+    ],
+    [
+     8,
+     72
+    ],
+    [
+     10,
+     120
+    ],
+    [
+     16,
+     146
+    ]
+   ]
+  },
+  {
+   "name": "residential_west",
+   "width": 5,
+   "points": [
+    [
+     -36,
+     -84
+    ],
+    [
+     -35,
+     -30
+    ],
+    [
+     -34,
+     20
+    ],
+    [
+     -28,
+     44
+    ],
+    [
+     -8,
+     60
+    ]
+   ]
+  },
+  {
+   "name": "harbor_road",
+   "width": 5,
+   "points": [
+    [
+     16,
+     146
+    ],
+    [
+     34,
+     154
+    ],
+    [
+     56,
+     160
+    ]
+   ]
+  },
+  {
+   "name": "park_lane",
+   "width": 4,
+   "points": [
+    [
+     -28,
+     44
+    ],
+    [
+     -52,
+     60
+    ],
+    [
+     -72,
+     76
+    ],
+    [
+     -86,
+     76
+    ]
+   ]
+  },
+  {
+   "name": "school_lane",
+   "width": 4,
+   "points": [
+    [
+     8,
+     26
+    ],
+    [
+     40,
+     24
+    ],
+    [
+     56,
+     24
+    ],
+    [
+     74,
+     24
+    ]
+   ]
+  },
+  {
+   "name": "hill_switchback",
+   "width": 4,
+   "points": [
+    [
+     -36,
+     -84
+    ],
+    [
+     -70,
+     -100
+    ],
+    [
+     -96,
+     -118
+    ],
+    [
+     -128,
+     -132
+    ],
+    [
+     -150,
+     -150
+    ]
+   ]
+  }
+ ],
+ "placements": [
+  {
+   "module": "house_two_story",
+   "pos": [
+    -46,
+    -70
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "house_small",
+   "pos": [
+    -24,
+    -64
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    -65.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    -62.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -29.5,
+    -71
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "house_small",
+   "pos": [
+    -46,
+    -54
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "house_two_story",
+   "pos": [
+    -24,
+    -48
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    -49.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    -46.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -29.5,
+    -55
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -35,
+    -44
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "car_parked",
+   "pos": [
+    -33,
+    -52
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "house_small",
+   "pos": [
+    -46,
+    -38
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "house_small",
+   "pos": [
+    -24,
+    -32
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    -33.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    -30.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -29.5,
+    -39
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "house_two_story",
+   "pos": [
+    -46,
+    -22
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "house_two_story",
+   "pos": [
+    -24,
+    -16
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    -17.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    -14.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -29.5,
+    -23
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -35,
+    -12
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "house_small",
+   "pos": [
+    -46,
+    -6
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "house_small",
+   "pos": [
+    -24,
+    0
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    -1.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    1.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -29.5,
+    -7
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "car_parked",
+   "pos": [
+    -33,
+    -4
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "house_small",
+   "pos": [
+    -46,
+    10
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "house_two_story",
+   "pos": [
+    -24,
+    16
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    14.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    -40.5,
+    17.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -29.5,
+    9
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -35,
+    20
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "power_pole",
+   "pos": [
+    -35,
+    -74
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "power_pole",
+   "pos": [
+    -35,
+    -44
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "power_pole",
+   "pos": [
+    -35,
+    -14
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "power_pole",
+   "pos": [
+    -35,
+    16
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "power_pole",
+   "pos": [
+    -35,
+    46
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "house_western",
+   "pos": [
+    -50,
+    26
+   ],
+   "rotY": 120
+  },
+  {
+   "module": "house_western",
+   "pos": [
+    -14,
+    -82
+   ],
+   "rotY": -35
+  },
+  {
+   "module": "shop_unit",
+   "pos": [
+    -5,
+    42
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "shop_unit",
+   "pos": [
+    22,
+    49
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    3.5,
+    45
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    13.5,
+    52
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "shop_unit",
+   "pos": [
+    -5,
+    57
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "shop_unit",
+   "pos": [
+    22,
+    64
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    3.5,
+    60
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    13.5,
+    67
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "shop_unit",
+   "pos": [
+    -5,
+    72
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "shop_unit",
+   "pos": [
+    22,
+    79
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    3.5,
+    75
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    13.5,
+    82
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "shop_unit",
+   "pos": [
+    -5,
+    87
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "shop_unit",
+   "pos": [
+    22,
+    94
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    3.5,
+    90
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    13.5,
+    97
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "shop_unit",
+   "pos": [
+    -5,
+    102
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "shop_unit",
+   "pos": [
+    22,
+    109
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    3.5,
+    105
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    13.5,
+    112
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "konbini",
+   "pos": [
+    -8,
+    116
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "vending_machine",
+   "pos": [
+    0.5,
+    108
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "vending_machine",
+   "pos": [
+    17,
+    55
+   ],
+   "rotY": -90
+  },
+  {
+   "module": "car_parked",
+   "pos": [
+    15.5,
+    46
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "car_parked",
+   "pos": [
+    15.5,
+    68
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "car_parked",
+   "pos": [
+    15.5,
+    90
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "power_pole",
+   "pos": [
+    18.5,
+    40
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "power_pole",
+   "pos": [
+    18.5,
+    64
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "power_pole",
+   "pos": [
+    18.5,
+    88
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "power_pole",
+   "pos": [
+    18.5,
+    112
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "guardrail",
+   "pos": [
+    20.0,
+    152
+   ],
+   "rotY": 12
+  },
+  {
+   "module": "guardrail",
+   "pos": [
+    23.2,
+    152
+   ],
+   "rotY": 12
+  },
+  {
+   "module": "guardrail",
+   "pos": [
+    26.4,
+    152
+   ],
+   "rotY": 12
+  },
+  {
+   "module": "guardrail",
+   "pos": [
+    29.6,
+    152
+   ],
+   "rotY": 12
+  },
+  {
+   "module": "guardrail",
+   "pos": [
+    32.8,
+    152
+   ],
+   "rotY": 12
+  },
+  {
+   "module": "guardrail",
+   "pos": [
+    36.0,
+    152
+   ],
+   "rotY": 12
+  },
+  {
+   "module": "pier_segment",
+   "pos": [
+    56,
+    168
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "pier_segment",
+   "pos": [
+    56,
+    172
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "pier_segment",
+   "pos": [
+    56,
+    176
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "pier_segment",
+   "pos": [
+    56,
+    180
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "bench",
+   "pos": [
+    30,
+    148
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "bench",
+   "pos": [
+    40,
+    149.5
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    35,
+    148.5
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    52,
+    158
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "shop_unit",
+   "pos": [
+    24,
+    138
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "vending_machine",
+   "pos": [
+    29.5,
+    139
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "torii_gate",
+   "pos": [
+    -74,
+    76
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -80.0,
+    76.0
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -83.5,
+    83.1
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -92.0,
+    86.0
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -100.5,
+    83.1
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -104.0,
+    76.0
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -100.5,
+    68.9
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -92.0,
+    66.0
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -83.5,
+    68.9
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "bench",
+   "pos": [
+    -88,
+    70
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "bench",
+   "pos": [
+    -88,
+    82
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    -80,
+    76
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -104,
+    62.0
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -104,
+    65.1
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -104,
+    68.2
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -104,
+    71.3
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -104,
+    74.4
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "hedge",
+   "pos": [
+    -104,
+    77.5
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "house_two_story",
+   "pos": [
+    66,
+    -6
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "house_two_story",
+   "pos": [
+    77,
+    -6
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "house_two_story",
+   "pos": [
+    88,
+    -6
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    56.0,
+    22
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    59.1,
+    22
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    62.2,
+    22
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    65.3,
+    22
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    68.4,
+    22
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    71.5,
+    22
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    74.6,
+    22
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    77.7,
+    22
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    80.8,
+    22
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    83.9,
+    22
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    54.5,
+    -12.0
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    54.5,
+    -8.9
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    54.5,
+    -5.8
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    54.5,
+    -2.7
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    54.5,
+    0.4
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    54.5,
+    3.5
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    54.5,
+    6.6
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "wall_block",
+   "pos": [
+    54.5,
+    9.7
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "torii_gate",
+   "pos": [
+    76,
+    22.5
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "tree",
+   "pos": [
+    62,
+    16
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "tree",
+   "pos": [
+    74,
+    16
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "tree",
+   "pos": [
+    86,
+    16
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "guardrail",
+   "pos": [
+    -158.0,
+    -158
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "guardrail",
+   "pos": [
+    -154.9,
+    -158
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "guardrail",
+   "pos": [
+    -151.9,
+    -158
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "guardrail",
+   "pos": [
+    -148.8,
+    -158
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "guardrail",
+   "pos": [
+    -145.8,
+    -158
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "bench",
+   "pos": [
+    -152,
+    -154
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "lamp_post",
+   "pos": [
+    -146,
+    -155
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "tree",
+   "pos": [
+    -162,
+    -150
+   ],
+   "rotY": 0
+  }
+ ]
+}
