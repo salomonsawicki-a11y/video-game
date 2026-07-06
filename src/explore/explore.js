@@ -9,9 +9,11 @@ import { modes } from '../core/modes.js';
 import { createTerrain } from './terrain.js';
 import { getGroundHeight } from './heightfield.js';
 import { KIT, buildPiece } from './kit.js';
-import { buildTown, spawns } from './town.js';
+import { buildTown, spawns, worldColliders } from './town.js';
+import { createController } from './controller.js';
 
-let scene, camera, composer, terrain, inited = false;
+let scene, camera, composer, terrain, ctl = null, inited = false;
+const FLY = new URLSearchParams(location.search).has('fly');
 
 // debug fly camera state
 const fly = { yaw: 2.6, pitch: -0.25, pos: new THREE.Vector3(-40, 26, 120), speed: 24 };
@@ -46,7 +48,10 @@ function init() {
   buildTown().then(({ group }) => {
     scene.add(group);
     const s0 = spawns.town_center;
-    if (s0) { fly.pos.copy(s0.pos).add(new THREE.Vector3(-Math.sin(s0.yaw) * 14, 8, -Math.cos(s0.yaw) * 14)); fly.yaw = s0.yaw; }
+    if (s0) {
+      if (ctl) ctl.teleport(s0);
+      else { fly.pos.copy(s0.pos).add(new THREE.Vector3(-Math.sin(s0.yaw) * 14, 8, -Math.cos(s0.yaw) * 14)); fly.yaw = s0.yaw; }
+    }
   }).catch(e => console.error('town build failed', e));
 
   // ?kit — lay the whole building kit out in a grid for eyeballing
@@ -61,6 +66,11 @@ function init() {
     });
     fly.pos.set(ox + 40, getGroundHeight(ox + 40, oz + 55) + 9, oz + 55);
     fly.yaw = Math.PI; fly.pitch = -0.25;
+  }
+
+  if (!FLY) ctl = createController(scene, camera, keys);
+  if (new URLSearchParams(location.search).has('debug')) {
+    window.EXDBG = { get state() { return ctl && ctl.state; }, spawns, worldColliders };
   }
 
   composer = new EffectComposer(renderer);
@@ -80,18 +90,26 @@ function init() {
   addEventListener('keydown', e => {
     keys[e.key.toLowerCase()] = true;
     if (modes.current !== 'explore') return;
-    if (e.key === 'Escape') exitExplore();
+    if (e.key === ' ') e.preventDefault();
+    if (e.key === 'Escape' && !document.pointerLockElement) exitExplore();
     const names = Object.keys(spawns);
     const n = parseInt(e.key, 10);
     if (n >= 1 && n <= names.length) {
       const sp = spawns[names[n - 1]];
-      fly.pos.copy(sp.pos).add(new THREE.Vector3(-Math.sin(sp.yaw) * 12, 7, -Math.cos(sp.yaw) * 12));
-      fly.yaw = sp.yaw; fly.pitch = -0.3;
+      if (ctl) ctl.teleport(sp);
+      else {
+        fly.pos.copy(sp.pos).add(new THREE.Vector3(-Math.sin(sp.yaw) * 12, 7, -Math.cos(sp.yaw) * 12));
+        fly.yaw = sp.yaw; fly.pitch = -0.3;
+      }
     }
   });
   addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
   const cnv = renderer.domElement;
-  cnv.addEventListener('pointerdown', e => { if (modes.current === 'explore') { looking = true; lastX = e.clientX; lastY = e.clientY; } });
+  cnv.addEventListener('pointerdown', e => {
+    if (modes.current !== 'explore') return;
+    if (ctl) { ctl.requestLock(); return; }
+    looking = true; lastX = e.clientX; lastY = e.clientY;
+  });
   addEventListener('pointerup', () => { looking = false; });
   addEventListener('pointermove', e => {
     if (modes.current !== 'explore' || !looking) return;
@@ -102,6 +120,12 @@ function init() {
 }
 
 function tick(dt) {
+  if (ctl) {
+    ctl.update(dt);
+    terrain.update(ctl.state.pos);
+    composer.render();
+    return;
+  }
   const fwd = new THREE.Vector3(Math.sin(fly.yaw) * Math.cos(fly.pitch), Math.sin(fly.pitch), Math.cos(fly.yaw) * Math.cos(fly.pitch));
   const right = new THREE.Vector3(Math.cos(fly.yaw), 0, -Math.sin(fly.yaw));
   const sp = fly.speed * (keys['shift'] ? 3 : 1) * dt;
@@ -129,7 +153,8 @@ export function enterExplore() {
     hintEl.style.cssText = 'position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:30;'
       + 'font:11px monospace;letter-spacing:1px;color:#dfe8f0;background:rgba(10,14,20,.55);'
       + 'padding:6px 14px;border:1px solid rgba(160,190,210,.35);pointer-events:none';
-    hintEl.textContent = 'WASD fly · Q/E down/up · SHIFT fast · drag to look · 1-5 teleport (town/shops/harbor/park/overlook) · ESC menu';
+    hintEl.textContent = FLY ? 'WASD fly · Q/E down/up · SHIFT fast · drag to look · 1-5 teleport · ESC menu'
+      : 'CLICK to capture mouse · WASD move · SHIFT run · SPACE jump · 1-5 teleport (town/shops/harbor/park/overlook) · ESC menu';
     document.body.appendChild(hintEl);
   }
   hintEl.style.display = 'block';
