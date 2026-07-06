@@ -42,9 +42,18 @@ exploration mode. New structure (serve the repo root, open `index.html`):
   base64-embedded). `vendor/` — three r185 ESM + addons + postprocessing.
 - `phantom_verdict_3d_v3.html` — the frozen legacy single-file build; do not
   edit it, it's reference only.
-- Morioh exploration roadmap: (2) terrain greybox→photoreal, (3) building
-  kit, (4) data-driven town layout, (5) third-person character controller +
-  collision, (6) HDR sky/atmosphere/water, (7) props/instancing/perf.
+- Morioh exploration mode is complete (Phases 2-7). `src/explore/`:
+  `heightfield.js` (analytic height/normal = the collision truth),
+  `terrain.js` (chunked LOD tiles + splat shader), `materials.js` (shared
+  PBR palette), `kit.js` (hand-built building/prop kit → `{group,colliders}`),
+  `town.js` (assembles from `assets/config/morioh_layout.json`, merges the
+  town to ~one draw call per material, loads Higgsfield GLBs from
+  `asset_manifest.json`), `controller.js` (third-person + capsule/AABB
+  collision), `sky.js` (procedural sky dome + baked PMREM env), `water.js`
+  (coastal shader), `scatter.js` (instanced grass/rock), `explore.js` (scene
+  + camera modes). URL flags: `?fly` `?kit` `?debug`. See README.md for the
+  layout/manifest formats and how to add content. Verification is numeric
+  (headless is software-WebGL ~10fps; real fps needs a GPU) — see README.
 
 ## Legacy notes (still apply to gameplay code in arena.js)
 

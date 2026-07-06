@@ -12,10 +12,12 @@ import { buildTown, spawns, worldColliders } from './town.js';
 import { createController } from './controller.js';
 import { createSky, buildSkyEnv } from './sky.js';
 import { createWater } from './water.js';
+import { createScatter } from './scatter.js';
 
 let scene, camera, composer, terrain, ctl = null, inited = false;
 const frameUpdaters = [];   // per-frame closures shared by both camera paths
 let elapsed = 0;
+let perfHook = null;   // reads renderer.info AFTER the composer renders
 const FLY = new URLSearchParams(location.search).has('fly');
 
 // debug fly camera state
@@ -76,6 +78,10 @@ function init() {
   // assemble the town from the layout config (async; terrain is already live)
   buildTown().then(({ group }) => {
     scene.add(group);
+    const scatter = createScatter(worldColliders);
+    scene.add(scatter.group);
+    frameUpdaters.push(() => scatter.update(camera.position));
+    if (window.__perf) window.__perf.scatter = scatter.count;
     const s0 = spawns.town_center;
     if (s0) {
       if (ctl) ctl.teleport(s0);
@@ -100,6 +106,20 @@ function init() {
   if (!FLY) ctl = createController(scene, camera, keys);
   if (new URLSearchParams(location.search).has('debug')) {
     window.EXDBG = { get state() { return ctl && ctl.state; }, spawns, worldColliders };
+    const perf = window.__perf = { scatter: 0, el: document.createElement('div'), acc: 0, frames: 0, fps: 0, calls: 0, tris: 0 };
+    perf.el.style.cssText = 'position:fixed;top:8px;right:8px;z-index:40;font:11px monospace;'
+      + 'color:#bfe;background:rgba(6,10,14,.7);padding:5px 9px;border:1px solid #2a3a44;white-space:pre;pointer-events:none';
+    document.body.appendChild(perf.el);
+    renderer.info.autoReset = false;
+    perfHook = (dt) => {
+      perf.acc += dt || 0; perf.frames++;
+      const info = renderer.info.render;         // read post-render: real totals for the frame
+      perf.calls = info.calls; perf.tris = info.triangles;
+      if (perf.acc >= 0.25) {
+        perf.fps = Math.round(perf.frames / perf.acc); perf.acc = 0; perf.frames = 0;
+        perf.el.textContent = `fps ${perf.fps}\ncalls ${perf.calls}\ntris ${(perf.tris/1000).toFixed(0)}k\nscatter ${perf.scatter}`;
+      }
+    };
   }
 
   composer = new EffectComposer(renderer);
@@ -148,14 +168,16 @@ function init() {
   });
 }
 
-function runFrame(dt) { elapsed += dt; for (const f of frameUpdaters) f(); }
+function runFrame(dt) { elapsed += dt; for (const f of frameUpdaters) f(dt); }
 
 function tick(dt) {
   if (ctl) {
     ctl.update(dt);
     runFrame(dt);
     terrain.update(ctl.state.pos);
+    if (perfHook) renderer.info.reset();
     composer.render();
+    if (perfHook) perfHook(dt);
     return;
   }
   const fwd = new THREE.Vector3(Math.sin(fly.yaw) * Math.cos(fly.pitch), Math.sin(fly.pitch), Math.cos(fly.yaw) * Math.cos(fly.pitch));
@@ -175,7 +197,9 @@ function tick(dt) {
   camera.lookAt(fly.pos.clone().add(fwd));
   runFrame(dt);
   terrain.update(fly.pos);
+  if (perfHook) renderer.info.reset();
   composer.render();
+  if (perfHook) perfHook(dt);
 }
 
 let hintEl = null;

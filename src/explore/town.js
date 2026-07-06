@@ -2,7 +2,9 @@
 // Rearranging the town = editing that JSON; nothing here is per-object.
 // Exposes world-space colliders for the Phase 5 character controller.
 import * as THREE from 'three';
-import { buildPiece } from './kit.js';
+import { buildPiece, KIT } from './kit.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { MAT } from './materials.js';
 import { getGroundHeight } from './heightfield.js';
 
@@ -67,14 +69,80 @@ function worldAABB(c, rotYDeg, px, py, pz) {
   };
 }
 
+// Collapse the assembled town (hundreds of small kit meshes sharing a finite
+// material palette) into one merged mesh per material — the Phase 7 draw-call
+// pass. Colliders are captured separately, so merging visuals is safe.
+function mergeStatic(src) {
+  src.updateMatrixWorld(true);
+  const buckets = new Map();                 // material -> [geometry]
+  src.traverse(o => {
+    if (!o.isMesh || o.isInstancedMesh) return;
+    const g = o.geometry.clone();
+    g.applyMatrix4(o.matrixWorld);
+    // normalise to position/normal/uv so mergeGeometries never rejects a piece
+    for (const name of Object.keys(g.attributes)) {
+      if (name !== 'position' && name !== 'normal' && name !== 'uv') g.deleteAttribute(name);
+    }
+    if (!g.attributes.normal) g.computeVertexNormals();
+    if (!g.attributes.uv) {
+      const n = g.attributes.position.count;
+      g.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(n * 2), 2));
+    }
+    if (g.index) g.toNonIndexed && (g.index = null);   // keep all non-indexed for a clean merge
+    const mat = Array.isArray(o.material) ? o.material[0] : o.material;
+    if (!buckets.has(mat)) buckets.set(mat, []);
+    buckets.get(mat).push(g.index ? g.toNonIndexed() : g);
+  });
+  const out = new THREE.Group();
+  for (const [mat, geos] of buckets) {
+    const merged = mergeGeometries(geos, false);
+    geos.forEach(g => g.dispose());
+    if (!merged) continue;
+    const mesh = new THREE.Mesh(merged, mat);
+    mesh.castShadow = true; mesh.receiveShadow = true;
+    out.add(mesh);
+  }
+  return out;
+}
+
 export async function buildTown() {
-  const layout = await (await fetch('./assets/config/morioh_layout.json')).json();
+  const [layout, manifest] = await Promise.all([
+    fetch('./assets/config/morioh_layout.json').then(r => r.json()),
+    fetch('./assets/config/asset_manifest.json').then(r => r.json()).catch(() => ({ assets: [] })),
+  ]);
   const group = new THREE.Group();
+
+  // preload any Higgsfield GLB assets referenced by placements
+  const byId = {};
+  for (const a of (manifest.assets || [])) byId[a.id] = a;
+  const needed = new Set(layout.placements.map(p => p.module).filter(m => !KIT[m] && byId[m]));
+  const loaded = {};
+  if (needed.size) {
+    const loader = new GLTFLoader();
+    await Promise.all([...needed].map(id => new Promise(res => {
+      loader.load(byId[id].glb, gltf => { loaded[id] = gltf.scene; res(); },
+        undefined, err => { console.error('asset load failed', id, err); res(); });
+    })));
+  }
+
+  function instantiate(module) {
+    if (KIT[module]) return buildPiece(module);
+    const src = loaded[module];
+    if (!src) return { group: new THREE.Group(), colliders: [] };
+    const g = src.clone(true);
+    g.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+    const a = byId[module];
+    const h = a && a.collider ? a.collider : null;   // [hx, hy, hz] half-extents
+    const colliders = h ? [{ min: [-h[0], 0, -h[2]], max: [h[0], h[1], h[2]] }]
+      : (() => { const b = new THREE.Box3().setFromObject(g);
+                 return [{ min: [b.min.x, 0, b.min.z], max: [b.max.x, b.max.y, b.max.z] }]; })();
+    return { group: g, colliders };
+  }
 
   for (const road of layout.roads) group.add(buildRoad(road));
 
   for (const p of layout.placements) {
-    const { group: g, colliders } = buildPiece(p.module);
+    const { group: g, colliders } = instantiate(p.module);
     const [x, z] = p.pos;
     const y = getGroundHeight(x, z) - 0.04;
     g.position.set(x, y, z);
@@ -82,6 +150,8 @@ export async function buildTown() {
     group.add(g);
     for (const c of colliders) worldColliders.push(worldAABB(c, p.rotY || 0, x, y, z));
   }
+
+  const merged = mergeStatic(group);   // ~one draw call per material
 
   for (const [name, s] of Object.entries(layout.spawns)) {
     const [x, z] = s.pos;
@@ -91,5 +161,5 @@ export async function buildTown() {
     };
   }
 
-  return { group, layout };
+  return { group: merged, layout };
 }

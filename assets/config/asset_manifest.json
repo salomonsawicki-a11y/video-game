@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "comment": "Higgsfield-generated 3D assets. Placements in morioh_layout.json whose 'module' matches an id here load this GLB instead of a kit piece. Empty until generation is authorized; kit stand-ins hold every slot in the meantime.",
+  "assets": []
+}
