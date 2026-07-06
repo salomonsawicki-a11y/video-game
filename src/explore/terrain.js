@@ -104,13 +104,7 @@ export function createTerrain() {
     tiles.push({ x: near.ox, z: near.oz, mNear, mFar });
   }
 
-  // simple placeholder sea — Phase 6 replaces this with the real water shader
-  const sea = new THREE.Mesh(
-    new THREE.PlaneGeometry(WORLD_HALF * 4, WORLD_HALF * 4),
-    new THREE.MeshStandardMaterial({ color: 0x0e3049, roughness: 0.34, metalness: 0.0 }));
-  sea.rotation.x = -Math.PI / 2;
-  sea.position.y = SEA_LEVEL - 0.15;
-  group.add(sea);
+  // (the sea is now the Phase 6 water shader, added by explore.js)
 
   function update(camPos) {
     for (const t of tiles) {

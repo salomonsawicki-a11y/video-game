@@ -2,7 +2,6 @@
 // Phase 5 replaces the fly camera with the third-person character
 // controller; the scene, lighting, and terrain stay.
 import * as THREE from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { EffectComposer, RenderPass, EffectPass, BloomEffect, SMAAEffect } from 'postprocessing';
 import { renderer } from '../core/renderer.js';
 import { modes } from '../core/modes.js';
@@ -11,8 +10,12 @@ import { getGroundHeight } from './heightfield.js';
 import { KIT, buildPiece } from './kit.js';
 import { buildTown, spawns, worldColliders } from './town.js';
 import { createController } from './controller.js';
+import { createSky, buildSkyEnv } from './sky.js';
+import { createWater } from './water.js';
 
 let scene, camera, composer, terrain, ctl = null, inited = false;
+const frameUpdaters = [];   // per-frame closures shared by both camera paths
+let elapsed = 0;
 const FLY = new URLSearchParams(location.search).has('fly');
 
 // debug fly camera state
@@ -28,21 +31,47 @@ function init() {
 
   camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 900);
 
-  // lighting: sun + IBL (placeholder env until the HDR sky in Phase 6)
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-  scene.environmentIntensity = 0.55;
-  const sun = new THREE.DirectionalLight(0xfff3e0, 3.4);
-  sun.position.set(-120, 160, -80);
+  // sun direction shared by the light, the sky dome, its baked env map, and water
+  const sunDir = new THREE.Vector3(-0.55, 0.62, -0.36).normalize();
+
+  // IBL + reflections baked from the procedural sky (HDR-ish, coherent)
+  scene.environment = buildSkyEnv(renderer, sunDir);
+  scene.environmentIntensity = 0.9;
+
+  // visible sky dome — follows the camera each frame
+  const sky = createSky(sunDir);
+  scene.add(sky.mesh);
+  frameUpdaters.push(() => sky.mesh.position.copy(camera.position));
+
+  const sun = new THREE.DirectionalLight(0xfff3e0, 3.1);
+  sun.position.copy(sunDir).multiplyScalar(220);
   sun.castShadow = true;
   sun.shadow.mapSize.set(2048, 2048);
   const sc = sun.shadow.camera;
-  sc.left = -160; sc.right = 160; sc.top = 160; sc.bottom = -160;
-  sc.near = 10; sc.far = 500;
+  sc.left = -170; sc.right = 170; sc.top = 170; sc.bottom = -170;
+  sc.near = 10; sc.far = 620;
+  sun.shadow.bias = -0.0004;
   scene.add(sun);
+  // keep the shadow frustum centred on the player
+  const sunTarget = new THREE.Object3D();
+  scene.add(sunTarget);
+  sun.target = sunTarget;
+  frameUpdaters.push(() => {
+    const c = ctl ? ctl.state.pos : fly.pos;
+    sunTarget.position.set(c.x, 0, c.z);
+    sun.position.set(c.x + sunDir.x * 220, sunDir.y * 220, c.z + sunDir.z * 220);
+  });
 
   terrain = createTerrain();
   scene.add(terrain.group);
+
+  // coastal water (real shader; sea plane removed from terrain)
+  const water = createWater(sunDir, 0xa8bccc, 120, 520);
+  scene.add(water.mesh);
+  frameUpdaters.push(() => {
+    water.mat.uniforms.uTime.value = elapsed;
+    water.mat.uniforms.uCam.value.copy(camera.position);
+  });
 
   // assemble the town from the layout config (async; terrain is already live)
   buildTown().then(({ group }) => {
@@ -119,9 +148,12 @@ function init() {
   });
 }
 
+function runFrame(dt) { elapsed += dt; for (const f of frameUpdaters) f(); }
+
 function tick(dt) {
   if (ctl) {
     ctl.update(dt);
+    runFrame(dt);
     terrain.update(ctl.state.pos);
     composer.render();
     return;
@@ -141,6 +173,7 @@ function tick(dt) {
 
   camera.position.copy(fly.pos);
   camera.lookAt(fly.pos.clone().add(fwd));
+  runFrame(dt);
   terrain.update(fly.pos);
   composer.render();
 }
