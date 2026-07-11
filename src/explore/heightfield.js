@@ -8,8 +8,11 @@
 //   north-west  : hill mass rising to ~y 34 with a hilltop overlook
 //   east        : low cliffs dropping to the water
 
-export const WORLD_HALF = 256;   // world spans ±256 m
+export const WORLD_HALF = 384;   // world spans ±384 m
 export const SEA_LEVEL = 0;
+// terrain features stay pinned to the original ±256 frame so heights in the
+// old town are unchanged; the expansion just grows the domain outward
+const FEATURE_HALF = 256;
 
 // ---- seeded value noise -----------------------------------------------
 function hash2(ix, iz) {
@@ -41,7 +44,7 @@ const smooth = (a, b, v) => sCurve(clamp01((v - a) / (b - a)));
 
 // ---- the height function ----------------------------------------------
 export function getGroundHeight(x, z) {
-  const nx = x / WORLD_HALF, nz = z / WORLD_HALF; // -1..1
+  const nx = x / FEATURE_HALF, nz = z / FEATURE_HALF; // -1..1 in the feature frame
 
   // base rolling ground
   const rolling = fbm(x * 0.008 + 13.7, z * 0.008 + 71.3, 4, 2.1, 0.5); // 0..1

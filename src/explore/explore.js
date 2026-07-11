@@ -210,8 +210,8 @@ export function enterExplore() {
     hintEl.style.cssText = 'position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:30;'
       + 'font:11px monospace;letter-spacing:1px;color:#dfe8f0;background:rgba(10,14,20,.55);'
       + 'padding:6px 14px;border:1px solid rgba(160,190,210,.35);pointer-events:none';
-    hintEl.textContent = FLY ? 'WASD fly · Q/E down/up · SHIFT fast · drag to look · 1-5 teleport · ESC menu'
-      : 'CLICK to capture mouse · WASD move · SHIFT run · SPACE jump · 1-5 teleport (town/shops/harbor/park/overlook) · ESC menu';
+    hintEl.textContent = FLY ? 'WASD fly · Q/E down/up · SHIFT fast · drag to look · 1-8 teleport · ESC menu'
+      : 'CLICK to capture mouse · WASD move · SHIFT run · SPACE jump · 1-8 teleport (town/shops/harbor/park/overlook/shrine/north/seaside) · ESC menu';
     document.body.appendChild(hintEl);
   }
   hintEl.style.display = 'block';
