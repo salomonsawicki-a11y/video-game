@@ -13,8 +13,9 @@ import { createController } from './controller.js';
 import { createSky, buildSkyEnv } from './sky.js';
 import { createWater } from './water.js';
 import { createScatter } from './scatter.js';
+import { createPhantom } from './phantom.js';
 
-let scene, camera, composer, terrain, ctl = null, inited = false;
+let scene, camera, composer, terrain, ctl = null, phantom = null, inited = false;
 const frameUpdaters = [];   // per-frame closures shared by both camera paths
 let elapsed = 0;
 let perfHook = null;   // reads renderer.info AFTER the composer renders
@@ -103,7 +104,10 @@ function init() {
     fly.yaw = Math.PI; fly.pitch = -0.25;
   }
 
-  if (!FLY) ctl = createController(scene, camera, keys);
+  if (!FLY) {
+    ctl = createController(scene, camera, keys);
+    phantom = createPhantom(scene);
+  }
   if (new URLSearchParams(location.search).has('debug')) {
     window.EXDBG = { get state() { return ctl && ctl.state; }, spawns, worldColliders };
     const perf = window.__perf = { scatter: 0, el: document.createElement('div'), acc: 0, frames: 0, fps: 0, calls: 0, tris: 0 };
@@ -141,6 +145,8 @@ function init() {
     if (modes.current !== 'explore') return;
     if (e.key === ' ') e.preventDefault();
     if (e.key === 'Escape' && !document.pointerLockElement) exitExplore();
+    if (phantom && e.key.toLowerCase() === 'f') phantom.toggle();
+    if (phantom && e.key.toLowerCase() === 'q') phantom.cycle();
     const names = Object.keys(spawns);
     const n = parseInt(e.key, 10);
     if (n >= 1 && n <= names.length) {
@@ -173,6 +179,7 @@ function runFrame(dt) { elapsed += dt; for (const f of frameUpdaters) f(dt); }
 function tick(dt) {
   if (ctl) {
     ctl.update(dt);
+    phantom.update(dt, ctl.state.pos, ctl.state.heading);
     runFrame(dt);
     terrain.update(ctl.state.pos);
     if (perfHook) renderer.info.reset();
@@ -211,7 +218,7 @@ export function enterExplore() {
       + 'font:11px monospace;letter-spacing:1px;color:#dfe8f0;background:rgba(10,14,20,.55);'
       + 'padding:6px 14px;border:1px solid rgba(160,190,210,.35);pointer-events:none';
     hintEl.textContent = FLY ? 'WASD fly · Q/E down/up · SHIFT fast · drag to look · 1-8 teleport · ESC menu'
-      : 'CLICK to capture mouse · WASD move · SHIFT run · SPACE jump · 1-8 teleport (town/shops/harbor/park/overlook/shrine/north/seaside) · ESC menu';
+      : 'CLICK to capture mouse · WASD move · SHIFT run · SPACE jump · F stand · Q switch stand · 1-8 teleport · ESC menu';
     document.body.appendChild(hintEl);
   }
   hintEl.style.display = 'block';

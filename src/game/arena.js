@@ -15,7 +15,7 @@ const lerp=(a,b,t)=>a+(b-a)*t;
 
 // ---------------- STAND DEFS ----------------
 // barrage = J basic; arts = [L,U,I,O,P]
-const STANDS=[
+export const STANDS=[
  {sym:'●',part:5,name:'CRIMSON HERALD',hex:0xe0354b,css:'#e0354b',acc:'#ff9aa8',accHex:0xff9aa8,
   desc:'Emperor of erased time',bDmg:9,bRate:4,bRange:7.5,cry:'GWAH!',
   arts:[{n:'SEVERING CHOP',cd:90},{n:'TIME ERASURE',cd:600},{n:'EPITAPH',cd:480},
@@ -372,7 +372,7 @@ function makeFrame(pts,hex){
   return g;
 }
 
-function buildStand(def,idx){
+export function buildStand(def,idx){
   const g=new THREE.Group();
   const mat=sMat(def.hex);
   const dark=new THREE.MeshStandardMaterial({color:0x1a1430,emissive:def.hex,emissiveIntensity:0.15});
