@@ -10,15 +10,21 @@ import * as THREE from 'three';
 export const SKY_GLSL = `
 vec3 skyColor(vec3 dir, vec3 sunDir){
   float up = max(dir.y, -0.15);
-  vec3 zenith  = vec3(0.14, 0.30, 0.60);
-  vec3 horizon = vec3(0.82, 0.84, 0.86);
-  vec3 ground  = vec3(0.26, 0.25, 0.24);
-  vec3 col = mix(horizon, zenith, pow(clamp(up, 0.0, 1.0), 0.5));
-  col = mix(col, ground, smoothstep(0.0, -0.10, dir.y));
-  float s = max(dot(normalize(dir), sunDir), 0.0);
-  col += vec3(1.0, 0.88, 0.66) * pow(s, 1200.0) * 16.0;   // sun disk
-  col += vec3(1.0, 0.74, 0.46) * pow(s, 12.0)   * 0.30;   // warm glow
-  col += vec3(1.0, 0.60, 0.40) * pow(s, 3.0)    * 0.06 * (1.0 - clamp(up,0.0,1.0)); // horizon haze
+  // golden hour: deep blue overhead, warm peach at the horizon opposite-warmed by the sun
+  vec3 zenith  = vec3(0.10, 0.22, 0.52);
+  vec3 hiMid   = vec3(0.42, 0.46, 0.70);
+  vec3 horizon = vec3(0.98, 0.74, 0.52);
+  float t = pow(clamp(up, 0.0, 1.0), 0.62);
+  vec3 col = mix(horizon, hiMid, smoothstep(0.0, 0.35, up));
+  col = mix(col, zenith, smoothstep(0.28, 1.0, up));
+  col = mix(col, vec3(0.22, 0.20, 0.22), smoothstep(0.0, -0.10, dir.y));
+  // warm the sky near the sun's azimuth even away from the disk
+  float az = max(dot(normalize(vec3(dir.x, 0.0, dir.z)), normalize(vec3(sunDir.x, 0.0, sunDir.z))), 0.0);
+  col = mix(col, col * vec3(1.25, 1.02, 0.82), az * (1.0 - up) * 0.7);
+  float sdot = max(dot(normalize(dir), sunDir), 0.0);
+  col += vec3(1.0, 0.82, 0.52) * pow(sdot, 1400.0) * 18.0;  // sun disk
+  col += vec3(1.0, 0.66, 0.36) * pow(sdot, 9.0)    * 0.55;  // broad warm glow
+  col += vec3(1.0, 0.50, 0.30) * pow(sdot, 2.5)    * 0.10 * (1.0 - clamp(up,0.0,1.0));
   return col;
 }`;
 

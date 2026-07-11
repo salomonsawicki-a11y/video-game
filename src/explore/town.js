@@ -79,14 +79,16 @@ function mergeStatic(src) {
     if (!o.isMesh || o.isInstancedMesh) return;
     const g = o.geometry.clone();
     g.applyMatrix4(o.matrixWorld);
-    // normalise to position/normal/uv so mergeGeometries never rejects a piece
+    // normalise to position/normal/uv/color so mergeGeometries never rejects a piece
     for (const name of Object.keys(g.attributes)) {
-      if (name !== 'position' && name !== 'normal' && name !== 'uv') g.deleteAttribute(name);
+      if (name !== 'position' && name !== 'normal' && name !== 'uv' && name !== 'color') g.deleteAttribute(name);
     }
     if (!g.attributes.normal) g.computeVertexNormals();
-    if (!g.attributes.uv) {
-      const n = g.attributes.position.count;
-      g.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(n * 2), 2));
+    const n = g.attributes.position.count;
+    if (!g.attributes.uv) g.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(n * 2), 2));
+    if (!g.attributes.color) {
+      const c = new Float32Array(n * 3).fill(1);   // white = no tint
+      g.setAttribute('color', new THREE.BufferAttribute(c, 3));
     }
     if (g.index) g.toNonIndexed && (g.index = null);   // keep all non-indexed for a clean merge
     const mat = Array.isArray(o.material) ? o.material[0] : o.material;
@@ -98,11 +100,30 @@ function mergeStatic(src) {
     const merged = mergeGeometries(geos, false);
     geos.forEach(g => g.dispose());
     if (!merged) continue;
+    mat.vertexColors = true;                       // per-building tint variety
     const mesh = new THREE.Mesh(merged, mat);
     mesh.castShadow = true; mesh.receiveShadow = true;
     out.add(mesh);
   }
   return out;
+}
+
+// paint a subtle per-piece multiplicative tint into vertex colors so the
+// merged town reads as many buildings, not a few flat blobs
+function tintPiece(g, seed) {
+  let s = (seed * 2654435761) >>> 0;
+  const rnd = () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296;
+  const base = 0.82 + rnd() * 0.34;                // 0.82..1.16 overall value
+  const cr = base * (0.96 + rnd() * 0.09);
+  const cg = base * (0.95 + rnd() * 0.08);
+  const cb = base * (0.93 + rnd() * 0.10);
+  g.traverse(o => {
+    if (!o.isMesh) return;
+    const geo = o.geometry, n = geo.attributes.position.count;
+    const col = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) { col[i*3] = cr; col[i*3+1] = cg; col[i*3+2] = cb; }
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  });
 }
 
 export async function buildTown() {
@@ -147,6 +168,7 @@ export async function buildTown() {
     const y = getGroundHeight(x, z) - 0.04;
     g.position.set(x, y, z);
     g.rotation.y = (p.rotY || 0) * Math.PI / 180;
+    if (KIT[p.module]) tintPiece(g, (x * 92821 + z * 68917) | 0);
     group.add(g);
     for (const c of colliders) worldColliders.push(worldAABB(c, p.rotY || 0, x, y, z));
   }

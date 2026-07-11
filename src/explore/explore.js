@@ -28,24 +28,24 @@ let looking = false, lastX = 0, lastY = 0;
 function init() {
   inited = true;
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x9fb8d4);
-  scene.fog = new THREE.Fog(0xa8bccc, 120, 520);
+  scene.background = new THREE.Color(0xd7a878);
+  scene.fog = new THREE.Fog(0xe6b98a, 90, 440); // warm haze, pulled in for depth
 
   camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 900);
 
   // sun direction shared by the light, the sky dome, its baked env map, and water
-  const sunDir = new THREE.Vector3(-0.55, 0.62, -0.36).normalize();
+  const sunDir = new THREE.Vector3(-0.82, 0.34, -0.52).normalize(); // low golden-hour sun
 
   // IBL + reflections baked from the procedural sky (HDR-ish, coherent)
   scene.environment = buildSkyEnv(renderer, sunDir);
-  scene.environmentIntensity = 0.9;
+  scene.environmentIntensity = 1.05;
 
   // visible sky dome — follows the camera each frame
   const sky = createSky(sunDir);
   scene.add(sky.mesh);
   frameUpdaters.push(() => sky.mesh.position.copy(camera.position));
 
-  const sun = new THREE.DirectionalLight(0xfff3e0, 3.1);
+  const sun = new THREE.DirectionalLight(0xffcf8a, 3.4); // warm low sun
   sun.position.copy(sunDir).multiplyScalar(220);
   sun.castShadow = true;
   sun.shadow.mapSize.set(2048, 2048);
@@ -68,7 +68,7 @@ function init() {
   scene.add(terrain.group);
 
   // coastal water (real shader; sea plane removed from terrain)
-  const water = createWater(sunDir, 0xa8bccc, 120, 520);
+  const water = createWater(sunDir, 0xe6b98a, 90, 440);
   scene.add(water.mesh);
   frameUpdaters.push(() => {
     water.mat.uniforms.uTime.value = elapsed;
