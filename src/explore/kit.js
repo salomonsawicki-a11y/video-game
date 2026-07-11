@@ -4,7 +4,7 @@
 //   ({ min:[x,y,z], max:[x,y,z] }); the town assembler transforms them.
 // Pieces face +Z; origin at ground center of the footprint.
 import * as THREE from 'three';
-import { MAT } from './materials.js';
+import { MAT, CAR_PAINTS } from './materials.js';
 
 const B = (w, h, d, mat, x = 0, y = 0, z = 0) => {
   const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
@@ -229,9 +229,11 @@ function tree() {
   return { group: g, colliders: [box([-0.25, 0, -0.25], [0.25, 2.6, 0.25])] };
 }
 
+let carPaintCycle = 0;
 function carParked() {
   const g = new THREE.Group();
-  g.add(B(1.6, 0.55, 3.4, MAT.carPaint, 0, 0.55, 0));
+  const paint = CAR_PAINTS[carPaintCycle++ % CAR_PAINTS.length];
+  g.add(B(1.6, 0.55, 3.4, paint, 0, 0.55, 0));
   g.add(B(1.45, 0.5, 1.9, MAT.carGlass, 0, 1.05, -0.15));
   for (const [x, z] of [[-0.72, 1.1], [0.72, 1.1], [-0.72, -1.1], [0.72, -1.1]]) {
     const t = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.2, 12), MAT.tireBlack);

@@ -50,7 +50,32 @@ function buildRoad(road) {
   mat.polygonOffset = true; mat.polygonOffsetFactor = -2; mat.polygonOffsetUnits = -2;
   const mesh = new THREE.Mesh(geo, mat);
   mesh.receiveShadow = true;
+  mesh.userData.keepUV = true; // road markings depend on the authored UVs
   return mesh;
+}
+
+// world-space box projection at 0.5 repeats/m — uniform texel density on
+// every merged surface regardless of the source primitive's UV layout.
+// Geometry must be non-indexed (vertices grouped in triangles).
+function boxProjectUV(g) {
+  const p = g.attributes.position;
+  const uv = new Float32Array(p.count * 2);
+  const S = 0.5;
+  for (let i = 0; i < p.count; i += 3) {
+    const e1x = p.getX(i + 1) - p.getX(i), e1y = p.getY(i + 1) - p.getY(i), e1z = p.getZ(i + 1) - p.getZ(i);
+    const e2x = p.getX(i + 2) - p.getX(i), e2y = p.getY(i + 2) - p.getY(i), e2z = p.getZ(i + 2) - p.getZ(i);
+    const nx = Math.abs(e1y * e2z - e1z * e2y);
+    const ny = Math.abs(e1z * e2x - e1x * e2z);
+    const nz = Math.abs(e1x * e2y - e1y * e2x);
+    for (let k = i; k < i + 3; k++) {
+      let u, v;
+      if (ny >= nx && ny >= nz) { u = p.getX(k); v = p.getZ(k); }
+      else if (nx >= nz)        { u = p.getZ(k); v = p.getY(k); }
+      else                      { u = p.getX(k); v = p.getY(k); }
+      uv[k * 2] = u * S; uv[k * 2 + 1] = v * S;
+    }
+  }
+  g.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
 }
 
 // transform a local AABB by rotY (degrees) + position → conservative world AABB
@@ -90,6 +115,7 @@ function mergeStatic(src) {
       g.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(n * 2), 2));
     }
     if (g.index) g = g.toNonIndexed();   // keep all non-indexed for a clean merge
+    if (!o.userData.keepUV) boxProjectUV(g);
     const mat = Array.isArray(o.material) ? o.material[0] : o.material;
     if (!buckets.has(mat)) buckets.set(mat, []);
     buckets.get(mat).push(g);
