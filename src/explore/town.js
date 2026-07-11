@@ -38,7 +38,7 @@ function buildRoad(road) {
     }
     if (i > 0) {
       const a = (i - 1) * 2, b = a + 1, c = i * 2, d = c + 1;
-      idx.push(a, c, b, b, c, d);
+      idx.push(a, b, c, b, d, c);
     }
   }
   const geo = new THREE.BufferGeometry();
@@ -75,9 +75,10 @@ function worldAABB(c, rotYDeg, px, py, pz) {
 function mergeStatic(src) {
   src.updateMatrixWorld(true);
   const buckets = new Map();                 // material -> [geometry]
+  const casts = new Map();                   // material -> any source mesh cast shadows
   src.traverse(o => {
     if (!o.isMesh || o.isInstancedMesh) return;
-    const g = o.geometry.clone();
+    let g = o.geometry.clone();
     g.applyMatrix4(o.matrixWorld);
     // normalise to position/normal/uv so mergeGeometries never rejects a piece
     for (const name of Object.keys(g.attributes)) {
@@ -88,10 +89,11 @@ function mergeStatic(src) {
       const n = g.attributes.position.count;
       g.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(n * 2), 2));
     }
-    if (g.index) g.toNonIndexed && (g.index = null);   // keep all non-indexed for a clean merge
+    if (g.index) g = g.toNonIndexed();   // keep all non-indexed for a clean merge
     const mat = Array.isArray(o.material) ? o.material[0] : o.material;
     if (!buckets.has(mat)) buckets.set(mat, []);
-    buckets.get(mat).push(g.index ? g.toNonIndexed() : g);
+    buckets.get(mat).push(g);
+    casts.set(mat, casts.get(mat) || o.castShadow);
   });
   const out = new THREE.Group();
   for (const [mat, geos] of buckets) {
@@ -99,7 +101,7 @@ function mergeStatic(src) {
     geos.forEach(g => g.dispose());
     if (!merged) continue;
     const mesh = new THREE.Mesh(merged, mat);
-    mesh.castShadow = true; mesh.receiveShadow = true;
+    mesh.castShadow = !!casts.get(mat); mesh.receiveShadow = true;
     out.add(mesh);
   }
   return out;
