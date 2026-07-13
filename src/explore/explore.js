@@ -2,7 +2,8 @@
 // Phase 5 replaces the fly camera with the third-person character
 // controller; the scene, lighting, and terrain stay.
 import * as THREE from 'three';
-import { EffectComposer, RenderPass, EffectPass, BloomEffect, SMAAEffect } from 'postprocessing';
+import { EffectComposer, RenderPass, EffectPass, BloomEffect, SMAAEffect,
+  NormalPass, SSAOEffect, VignetteEffect, BrightnessContrastEffect, BlendFunction } from 'postprocessing';
 import { renderer } from '../core/renderer.js';
 import { modes } from '../core/modes.js';
 import { createTerrain } from './terrain.js';
@@ -30,30 +31,31 @@ function init() {
   inited = true;
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x9fb8d4);
-  scene.fog = new THREE.Fog(0xa8bccc, 120, 520);
+  scene.fog = new THREE.Fog(0xcfc8bc, 150, 680);   // warm golden-hour haze
 
-  camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 900);
+  camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 1300);
 
   // sun direction shared by the light, the sky dome, its baked env map, and water
-  const sunDir = new THREE.Vector3(-0.55, 0.62, -0.36).normalize();
+  const sunDir = new THREE.Vector3(-0.48, 0.33, -0.54).normalize(); // low golden-hour sun
 
   // IBL + reflections baked from the procedural sky (HDR-ish, coherent)
   scene.environment = buildSkyEnv(renderer, sunDir);
-  scene.environmentIntensity = 0.9;
+  scene.environmentIntensity = 0.8;
 
   // visible sky dome — follows the camera each frame
   const sky = createSky(sunDir);
   scene.add(sky.mesh);
   frameUpdaters.push(() => sky.mesh.position.copy(camera.position));
 
-  const sun = new THREE.DirectionalLight(0xfff3e0, 3.1);
+  const sun = new THREE.DirectionalLight(0xffd9ac, 3.4);
   sun.position.copy(sunDir).multiplyScalar(220);
   sun.castShadow = true;
-  sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.mapSize.set(4096, 4096);
   const sc = sun.shadow.camera;
-  sc.left = -170; sc.right = 170; sc.top = 170; sc.bottom = -170;
-  sc.near = 10; sc.far = 620;
-  sun.shadow.bias = -0.0004;
+  sc.left = -130; sc.right = 130; sc.top = 130; sc.bottom = -130;
+  sc.near = 10; sc.far = 700;
+  sun.shadow.bias = -0.0002;
+  sun.shadow.normalBias = 0.03;
   scene.add(sun);
   // keep the shadow frustum centred on the player
   const sunTarget = new THREE.Object3D();
@@ -69,7 +71,7 @@ function init() {
   scene.add(terrain.group);
 
   // coastal water (real shader; sea plane removed from terrain)
-  const water = createWater(sunDir, 0xa8bccc, 120, 520);
+  const water = createWater(sunDir, 0xcfc8bc, 150, 680);
   scene.add(water.mesh);
   frameUpdaters.push(() => {
     water.mat.uniforms.uTime.value = elapsed;
@@ -128,8 +130,23 @@ function init() {
 
   composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera));
+  // SSAO grounds objects with contact shading — the single biggest step
+  // away from the flat "toy render" look
+  const normalPass = new NormalPass(scene, camera);
+  composer.addPass(normalPass);
+  const ssao = new SSAOEffect(camera, normalPass.texture, {
+    blendFunction: BlendFunction.MULTIPLY,
+    samples: 12, rings: 4,
+    luminanceInfluence: 0.55,
+    radius: 0.09, intensity: 2.2, bias: 0.02, fade: 0.012,
+    distanceThreshold: 0.55, distanceFalloff: 0.08,
+    resolutionScale: 0.75,
+  });
   composer.addPass(new EffectPass(camera,
-    new BloomEffect({ intensity: 0.35, luminanceThreshold: 0.8, mipmapBlur: true }),
+    ssao,
+    new BloomEffect({ intensity: 0.3, luminanceThreshold: 0.82, mipmapBlur: true }),
+    new VignetteEffect({ offset: 0.3, darkness: 0.5 }),
+    new BrightnessContrastEffect({ contrast: 0.07 }),
     new SMAAEffect()));
   composer.setSize(innerWidth, innerHeight);
 

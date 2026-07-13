@@ -84,6 +84,10 @@ export function createTerrain() {
           float sandW = (1.0 - rockW) * (1.0 - smoothstep(1.0, 3.2, vWPos.y));
           float grassW = max(0.0, 1.0 - rockW - sandW);
           vec3 g = texture2D(tGrass, vWPos.xz * uRepeat).rgb;
+          // large-scale meadow patchiness: re-sample the grass noise at a
+          // macro frequency and swing between lush and sun-dried tones
+          float macro = texture2D(tGrass, vWPos.xz * 0.011).g;
+          g *= mix(vec3(0.82, 0.78, 0.55), vec3(1.06, 1.04, 0.95), smoothstep(0.30, 0.62, macro));
           vec3 s = texture2D(tSand,  vWPos.xz * uRepeat).rgb;
           vec3 r = triplanar(tRock, vWPos, vWNorm, uRepeat * 0.6);
           diffuseColor.rgb *= g * grassW + r * rockW + s * sandW;

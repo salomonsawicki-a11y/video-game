@@ -10,15 +10,15 @@ import * as THREE from 'three';
 export const SKY_GLSL = `
 vec3 skyColor(vec3 dir, vec3 sunDir){
   float up = max(dir.y, -0.15);
-  vec3 zenith  = vec3(0.14, 0.30, 0.60);
-  vec3 horizon = vec3(0.82, 0.84, 0.86);
-  vec3 ground  = vec3(0.26, 0.25, 0.24);
+  vec3 zenith  = vec3(0.11, 0.25, 0.55);
+  vec3 horizon = vec3(0.88, 0.80, 0.68);
+  vec3 ground  = vec3(0.30, 0.27, 0.23);
   vec3 col = mix(horizon, zenith, pow(clamp(up, 0.0, 1.0), 0.5));
   col = mix(col, ground, smoothstep(0.0, -0.10, dir.y));
   float s = max(dot(normalize(dir), sunDir), 0.0);
   col += vec3(1.0, 0.88, 0.66) * pow(s, 1200.0) * 16.0;   // sun disk
-  col += vec3(1.0, 0.74, 0.46) * pow(s, 12.0)   * 0.30;   // warm glow
-  col += vec3(1.0, 0.60, 0.40) * pow(s, 3.0)    * 0.06 * (1.0 - clamp(up,0.0,1.0)); // horizon haze
+  col += vec3(1.0, 0.72, 0.42) * pow(s, 10.0)   * 0.55;   // warm glow
+  col += vec3(1.0, 0.58, 0.36) * pow(s, 3.0)    * 0.12 * (1.0 - clamp(up,0.0,1.0)); // horizon haze
   return col;
 }`;
 

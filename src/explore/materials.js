@@ -20,6 +20,37 @@ function canvasTex(px, draw) {
   t.colorSpace = THREE.SRGBColorSpace;
   t.wrapS = t.wrapT = THREE.RepeatWrapping;
   t.anisotropy = 4;
+  t.userData.canvas = c;               // kept so a normal map can be derived
+  return t;
+}
+
+// derive a tangent-space normal map from an albedo canvas: luminance is
+// treated as height (mortar/joints read darker => recessed) and run
+// through a wrapped Sobel. This is what lifts surfaces out of flatland.
+function normalFrom(tex, strength) {
+  const src = tex.userData.canvas, px = src.width;
+  const sd = src.getContext('2d').getImageData(0, 0, px, px).data;
+  const h = new Float32Array(px * px);
+  for (let i = 0; i < px * px; i++)
+    h[i] = (sd[i * 4] * 0.299 + sd[i * 4 + 1] * 0.587 + sd[i * 4 + 2] * 0.114) / 255;
+  const at = (x, y) => h[((y + px) % px) * px + ((x + px) % px)];
+  const c = document.createElement('canvas'); c.width = c.height = px;
+  const g = c.getContext('2d');
+  const img = g.createImageData(px, px), d = img.data;
+  for (let y = 0; y < px; y++) for (let x = 0; x < px; x++) {
+    const dx = (at(x + 1, y) - at(x - 1, y)) * strength;
+    const dy = (at(x, y + 1) - at(x, y - 1)) * strength;
+    const inv = 1 / Math.hypot(dx, dy, 1);
+    const i = (y * px + x) * 4;
+    d[i] = (-dx * inv * 0.5 + 0.5) * 255;
+    d[i + 1] = (dy * inv * 0.5 + 0.5) * 255;
+    d[i + 2] = inv * 255;
+    d[i + 3] = 255;
+  }
+  g.putImageData(img, 0, 0);
+  const t = new THREE.CanvasTexture(c);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.anisotropy = 4;
   return t;
 }
 
@@ -170,22 +201,31 @@ const texRoad = canvasTex(512, (g, px) => {
 });
 
 const M = (opts) => new THREE.MeshStandardMaterial(opts);
+const NM = (opts, srcTex, strength, scale = 1) => {
+  const m = M(opts);
+  m.normalMap = normalFrom(srcTex, strength);
+  m.normalScale.set(scale, scale);
+  return m;
+};
+
+// per-surface normal strengths (one derived map per source canvas)
+const nPlaster = 2.6, nWood = 3.2, nRoof = 5.5;
 
 export const MAT = {
-  plaster:    M({ color: 0xe8e2d4, roughness: 0.9, map: texPlaster }),
-  plasterTan: M({ color: 0xd9c9a8, roughness: 0.9, map: texPlaster }),
-  woodDark:   M({ color: 0x4a3626, roughness: 0.85, map: texWood }),
-  woodDeck:   M({ color: 0x8a6a48, roughness: 0.9, map: texWood }),
-  roofBlue:   M({ color: 0x35506e, roughness: 0.55, metalness: 0.05, map: texRoofTiles }),
-  roofGrey:   M({ color: 0x555a60, roughness: 0.6, map: texRoofTiles }),
-  roofTerra:  M({ color: 0x9c5a40, roughness: 0.7, map: texRoofTiles }),
-  concrete:   M({ color: 0xb9b4aa, roughness: 0.95, map: texConcrete }),
-  stone:      M({ color: 0x8d8578, roughness: 0.95, map: texStone }),
-  asphalt:    M({ color: 0xffffff, roughness: 0.98, map: texRoad }),
-  brick:      M({ color: 0xffffff, roughness: 0.9, map: texBrick }),
+  plaster:    NM({ color: 0xe8e2d4, roughness: 0.9, map: texPlaster }, texPlaster, nPlaster),
+  plasterTan: NM({ color: 0xd9c9a8, roughness: 0.9, map: texPlaster }, texPlaster, nPlaster),
+  woodDark:   NM({ color: 0x4a3626, roughness: 0.85, map: texWood }, texWood, nWood),
+  woodDeck:   NM({ color: 0x8a6a48, roughness: 0.9, map: texWood }, texWood, nWood),
+  roofBlue:   NM({ color: 0x35506e, roughness: 0.62, metalness: 0.05, map: texRoofTiles }, texRoofTiles, nRoof),
+  roofGrey:   NM({ color: 0x555a60, roughness: 0.66, map: texRoofTiles }, texRoofTiles, nRoof),
+  roofTerra:  NM({ color: 0x9c5a40, roughness: 0.72, map: texRoofTiles }, texRoofTiles, nRoof),
+  concrete:   NM({ color: 0xb9b4aa, roughness: 0.95, map: texConcrete }, texConcrete, 2.4),
+  stone:      NM({ color: 0x8d8578, roughness: 0.95, map: texStone }, texStone, 5.0),
+  asphalt:    NM({ color: 0xffffff, roughness: 0.97, map: texRoad }, texRoad, 2.2, 0.6),
+  brick:      NM({ color: 0xffffff, roughness: 0.88, map: texBrick }, texBrick, 4.2),
   metalWhite: M({ color: 0xeef2f2, roughness: 0.4, metalness: 0.6 }),
   metalGrey:  M({ color: 0x777d82, roughness: 0.5, metalness: 0.7 }),
-  glass:      M({ color: 0x9fc4d4, roughness: 0.08, metalness: 0.0, transparent: true, opacity: 0.42 }),
+  glass:      M({ color: 0x6f95ac, roughness: 0.05, metalness: 0.1, transparent: true, opacity: 0.55 }),
   foliage:    M({ color: 0x3e6b2e, roughness: 0.95, map: texFoliage }),
   foliageHedge: M({ color: 0x35592a, roughness: 0.95, map: texFoliage }),
   trunk:      M({ color: 0x5a4230, roughness: 0.95, map: texWood }),

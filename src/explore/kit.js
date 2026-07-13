@@ -216,16 +216,39 @@ function bench() {
   return { group: g, colliders: [box([-0.9, 0, -0.3], [0.9, 0.95, 0.3])] };
 }
 
+let treeSeed = 977;
+function lumpyBlob(r, seed) {
+  // displaced icosahedron: organic canopy lump instead of a clean sphere
+  const geo = new THREE.IcosahedronGeometry(r, 2);
+  const p = geo.attributes.position;
+  let s = seed >>> 0; const rnd = () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296;
+  // per-vertex jitter keyed to position so shared vertices stay welded
+  const jitter = new Map();
+  for (let i = 0; i < p.count; i++) {
+    const k = `${p.getX(i).toFixed(3)},${p.getY(i).toFixed(3)},${p.getZ(i).toFixed(3)}`;
+    if (!jitter.has(k)) jitter.set(k, 0.78 + rnd() * 0.42);
+    const j = jitter.get(k);
+    p.setXYZ(i, p.getX(i) * j, p.getY(i) * j * 0.88, p.getZ(i) * j);
+  }
+  geo.computeVertexNormals();
+  return geo;
+}
+
 function tree() {
   const g = new THREE.Group();
-  const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.2, 2.6, 7), MAT.trunk);
+  const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.22, 2.6, 7), MAT.trunk);
   trunk.position.y = 1.3; trunk.castShadow = true;
   g.add(trunk);
-  for (const [x, y, z, r] of [[0, 3.2, 0, 1.4], [0.8, 2.7, 0.3, 0.9], [-0.7, 2.8, -0.4, 0.95], [0.1, 2.5, 0.8, 0.8]]) {
-    const blob = new THREE.Mesh(new THREE.IcosahedronGeometry(r, 1), MAT.foliage);
-    blob.position.set(x, y, z); blob.castShadow = true;
+  const seed = (treeSeed = (treeSeed * 48271) % 2147483647);
+  const lumps = [[0, 3.3, 0, 1.55], [0.85, 2.8, 0.35, 1.0], [-0.75, 2.9, -0.4, 1.05],
+                 [0.1, 2.55, 0.85, 0.9], [-0.3, 3.9, 0.2, 0.85], [0.4, 2.7, -0.75, 0.85]];
+  lumps.forEach(([x, y, z, r], i) => {
+    const blob = new THREE.Mesh(lumpyBlob(r, seed + i * 131), MAT.foliage);
+    blob.position.set(x, y, z);
+    blob.rotation.y = ((seed >> (i + 2)) % 63) / 10;
+    blob.castShadow = true;
     g.add(blob);
-  }
+  });
   return { group: g, colliders: [box([-0.25, 0, -0.25], [0.25, 2.6, 0.25])] };
 }
 
