@@ -95,8 +95,10 @@ Kit ids: `house_small`, `house_two_story`, `house_western`, `shop_unit`,
 ## Asset manifest — `assets/config/asset_manifest.json`
 
 Registers Higgsfield-generated (or any) GLB assets so a `placements[].module`
-can reference one instead of a kit piece. Empty until generation is authorized;
-kit stand-ins hold every slot until then.
+can reference one instead of a kit piece. The first three photoreal buildings
+(cafe, traditional house, department store — `sam_3_3d` at 1 credit each,
+textured GLB out of a 2-credit `nano_banana_pro` reference image) live in
+`assets/models/higgsfield/`.
 
 ```jsonc
 {
@@ -106,12 +108,20 @@ kit stand-ins hold every slot until then.
       "id": "harbor_lighthouse",             // referenced by placements[].module
       "prompt": "photoreal weathered concrete lighthouse, overcast",
       "glb": "assets/models/props/harbor_lighthouse.glb",
+      "height": 12.0,                        // metres; town.js scales the GLB to this and rests it on y=0
       "collider": [1.4, 9.0, 1.4],           // box half-extents [hx, hy, hz]; omit for auto-bounds
       "tris": 4200
     }
   ]
 }
 ```
+
+Recipe for a new building: `generate_image` (single building, isometric
+three-quarter view, isolated on a plain background, "game asset reference
+sheet style") → `generate_3d` with `sam_3_3d` (exports a textured GLB) →
+download into `assets/models/higgsfield/` → manifest entry with `height` +
+`collider` → placement in `morioh_layout.json`. town.js keeps the asset's
+authored texture UVs through the merge pass automatically.
 
 Conform every generated asset before adding it: decimate to a tri budget,
 verify a full PBR map set (albedo + normal + roughness + metal + AO),

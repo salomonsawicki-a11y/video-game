@@ -1,5 +1,39 @@
 {
-  "version": 1,
-  "comment": "Higgsfield-generated 3D assets. Placements in morioh_layout.json whose 'module' matches an id here load this GLB instead of a kit piece. Empty until generation is authorized; kit stand-ins hold every slot in the meantime.",
-  "assets": []
+ "version": 1,
+ "comment": "Higgsfield-generated 3D assets. Placements in morioh_layout.json whose 'module' matches an id here load this GLB instead of a kit piece. Empty until generation is authorized; kit stand-ins hold every slot in the meantime.",
+ "assets": [
+  {
+   "id": "hf_cafe_corner",
+   "glb": "./assets/models/higgsfield/cafe_corner.glb",
+   "height": 7.5,
+   "collider": [
+    4.2,
+    7.5,
+    4.2
+   ],
+   "source": "Higgsfield sam_3_3d a3a3a745-479d-4d0d-8f1d-cf05b552e0d0"
+  },
+  {
+   "id": "hf_house_jp",
+   "glb": "./assets/models/higgsfield/house_jp.glb",
+   "height": 7.0,
+   "collider": [
+    4.0,
+    7.0,
+    4.0
+   ],
+   "source": "Higgsfield sam_3_3d 02481cfb-f2d8-4c40-83bd-419c32df0e5b"
+  },
+  {
+   "id": "hf_depato",
+   "glb": "./assets/models/higgsfield/depato.glb",
+   "height": 15.0,
+   "collider": [
+    7.5,
+    15.0,
+    7.5
+   ],
+   "source": "Higgsfield sam_3_3d a2ab439c-3ecc-46e4-aab4-70644c05d4e1"
+  }
+ ]
 }

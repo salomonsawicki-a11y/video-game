@@ -158,13 +158,26 @@ export async function buildTown() {
     const src = loaded[module];
     if (!src) return { group: new THREE.Group(), colliders: [] };
     const g = src.clone(true);
-    g.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
     const a = byId[module];
+    // normalise: scale to the manifest height and rest the base on y=0
+    const bb = new THREE.Box3().setFromObject(g);
+    const sc = a && a.height ? a.height / Math.max(0.001, bb.max.y - bb.min.y) : 1;
+    g.scale.setScalar(sc);
+    const ctr = bb.getCenter(new THREE.Vector3());
+    g.position.set(-ctr.x * sc, -bb.min.y * sc, -ctr.z * sc);
+    const inner = g; // wrap so placement transforms stay clean
+    const wrap = new THREE.Group();
+    wrap.add(inner);
+    g.traverse(o => {
+      if (!o.isMesh) return;
+      o.castShadow = true; o.receiveShadow = true;
+      o.userData.keepUV = true;   // authored texture UVs — merge must not box-project them
+    });
     const h = a && a.collider ? a.collider : null;   // [hx, hy, hz] half-extents
     const colliders = h ? [{ min: [-h[0], 0, -h[2]], max: [h[0], h[1], h[2]] }]
-      : (() => { const b = new THREE.Box3().setFromObject(g);
+      : (() => { const b = new THREE.Box3().setFromObject(wrap);
                  return [{ min: [b.min.x, 0, b.min.z], max: [b.max.x, b.max.y, b.max.z] }]; })();
-    return { group: g, colliders };
+    return { group: wrap, colliders };
   }
 
   for (const road of layout.roads) group.add(buildRoad(road));

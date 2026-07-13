@@ -2661,6 +2661,38 @@
     -109
    ],
    "rotY": 90
+  },
+  {
+   "module": "hf_cafe_corner",
+   "pos": [
+    22,
+    88
+   ],
+   "rotY": 250
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    26,
+    42
+   ],
+   "rotY": 265
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    24,
+    -146
+   ],
+   "rotY": 250
+  },
+  {
+   "module": "hf_depato",
+   "pos": [
+    32,
+    70
+   ],
+   "rotY": 270
   }
  ]
 }
