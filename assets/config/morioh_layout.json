@@ -703,14 +703,6 @@
    "rotY": 90
   },
   {
-   "module": "shop_unit",
-   "pos": [
-    22,
-    79
-   ],
-   "rotY": -90
-  },
-  {
    "module": "lamp_post",
    "pos": [
     3.5,
@@ -2663,22 +2655,6 @@
    "rotY": 90
   },
   {
-   "module": "hf_cafe_corner",
-   "pos": [
-    22,
-    88
-   ],
-   "rotY": 250
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    26,
-    42
-   ],
-   "rotY": 265
-  },
-  {
    "module": "hf_house_jp",
    "pos": [
     24,
@@ -2687,12 +2663,28 @@
    "rotY": 250
   },
   {
+   "module": "hf_house_jp",
+   "pos": [
+    15,
+    36
+   ],
+   "rotY": 265
+  },
+  {
    "module": "hf_depato",
    "pos": [
-    32,
-    70
+    24,
+    79
    ],
    "rotY": 270
+  },
+  {
+   "module": "hf_cafe_corner",
+   "pos": [
+    -7,
+    79.5
+   ],
+   "rotY": 90
   }
  ]
 }
