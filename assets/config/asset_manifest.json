@@ -3,15 +3,15 @@
  "comment": "Higgsfield-generated 3D assets. Placements in morioh_layout.json whose 'module' matches an id here load this GLB instead of a kit piece. Empty until generation is authorized; kit stand-ins hold every slot in the meantime.",
  "assets": [
   {
-   "id": "hf_cafe_corner",
-   "glb": "./assets/models/higgsfield/cafe_corner.glb",
-   "height": 7.5,
+   "id": "hf_house_jp_s",
+   "glb": "./assets/models/higgsfield/house_jp.glb",
+   "height": 6.2,
    "collider": [
-    4.2,
-    7.5,
-    4.2
+    3.6,
+    6.2,
+    3.6
    ],
-   "source": "Higgsfield sam_3_3d a3a3a745-479d-4d0d-8f1d-cf05b552e0d0"
+   "source": "Higgsfield sam_3_3d 02481cfb"
   },
   {
    "id": "hf_house_jp",
@@ -22,7 +22,40 @@
     7.0,
     4.0
    ],
-   "source": "Higgsfield sam_3_3d 02481cfb-f2d8-4c40-83bd-419c32df0e5b"
+   "source": "Higgsfield sam_3_3d 02481cfb"
+  },
+  {
+   "id": "hf_house_jp_l",
+   "glb": "./assets/models/higgsfield/house_jp.glb",
+   "height": 7.8,
+   "collider": [
+    4.5,
+    7.8,
+    4.5
+   ],
+   "source": "Higgsfield sam_3_3d 02481cfb"
+  },
+  {
+   "id": "hf_shop",
+   "glb": "./assets/models/higgsfield/cafe_corner.glb",
+   "height": 6.6,
+   "collider": [
+    3.7,
+    6.6,
+    3.7
+   ],
+   "source": "Higgsfield sam_3_3d a3a3a745"
+  },
+  {
+   "id": "hf_cafe_corner",
+   "glb": "./assets/models/higgsfield/cafe_corner.glb",
+   "height": 7.5,
+   "collider": [
+    4.2,
+    7.5,
+    4.2
+   ],
+   "source": "Higgsfield sam_3_3d a3a3a745"
   },
   {
    "id": "hf_depato",
@@ -33,7 +66,7 @@
     15.0,
     7.5
    ],
-   "source": "Higgsfield sam_3_3d a2ab439c-3ecc-46e4-aab4-70644c05d4e1"
+   "source": "Higgsfield sam_3_3d a2ab439c"
   }
  ]
 }

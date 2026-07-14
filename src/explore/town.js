@@ -101,8 +101,15 @@ function mergeStatic(src) {
   src.updateMatrixWorld(true);
   const buckets = new Map();                 // material -> [geometry]
   const casts = new Map();                   // material -> any source mesh cast shadows
+  // GLB assets stay as individual clones: their geometry is shared between
+  // instances (merging would duplicate it per placement) and per-mesh
+  // frustum culling matters at their triangle counts
+  const keepWhole = [];
+  for (const child of [...src.children]) {
+    if (child.userData.noMerge) keepWhole.push(child);
+  }
   src.traverse(o => {
-    if (!o.isMesh || o.isInstancedMesh) return;
+    if (!o.isMesh || o.isInstancedMesh || o.userData.noMerge) return;
     let g = o.geometry.clone();
     g.applyMatrix4(o.matrixWorld);
     // normalise to position/normal/uv so mergeGeometries never rejects a piece
@@ -130,6 +137,7 @@ function mergeStatic(src) {
     mesh.castShadow = !!casts.get(mat); mesh.receiveShadow = true;
     out.add(mesh);
   }
+  for (const child of keepWhole) out.add(child); // re-parent, transforms intact
   return out;
 }
 
@@ -168,10 +176,12 @@ export async function buildTown() {
     const inner = g; // wrap so placement transforms stay clean
     const wrap = new THREE.Group();
     wrap.add(inner);
+    wrap.userData.noMerge = true; // stays a shared-geometry clone, culled per mesh
     g.traverse(o => {
       if (!o.isMesh) return;
       o.castShadow = true; o.receiveShadow = true;
       o.userData.keepUV = true;   // authored texture UVs — merge must not box-project them
+      o.userData.noMerge = true;
     });
     const h = a && a.collider ? a.collider : null;   // [hx, hy, hz] half-extents
     const colliders = h ? [{ min: [-h[0], 0, -h[2]], max: [h[0], h[1], h[2]] }]

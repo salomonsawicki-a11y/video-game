@@ -295,20 +295,20 @@
  ],
  "placements": [
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp_s",
    "pos": [
     -46,
     -70
    ],
-   "rotY": 90
+   "rotY": 92
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp",
    "pos": [
     -24,
     -64
    ],
-   "rotY": -90
+   "rotY": 268
   },
   {
    "module": "wall_block",
@@ -335,20 +335,20 @@
    "rotY": 90
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_l",
    "pos": [
     -46,
     -54
    ],
-   "rotY": 90
+   "rotY": 95
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp",
    "pos": [
     -24,
     -48
    ],
-   "rotY": -90
+   "rotY": 271
   },
   {
    "module": "wall_block",
@@ -391,20 +391,20 @@
    "rotY": 0
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_s",
    "pos": [
     -46,
     -38
    ],
-   "rotY": 90
+   "rotY": 87
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_l",
    "pos": [
     -24,
     -32
    ],
-   "rotY": -90
+   "rotY": 274
   },
   {
    "module": "wall_block",
@@ -431,7 +431,7 @@
    "rotY": 90
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp_s",
    "pos": [
     -46,
     -22
@@ -439,12 +439,12 @@
    "rotY": 90
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp",
    "pos": [
     -24,
     -16
    ],
-   "rotY": -90
+   "rotY": 266
   },
   {
    "module": "wall_block",
@@ -479,20 +479,20 @@
    "rotY": 0
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_l",
    "pos": [
     -46,
     -6
    ],
-   "rotY": 90
+   "rotY": 93
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp",
    "pos": [
     -24,
     0
    ],
-   "rotY": -90
+   "rotY": 269
   },
   {
    "module": "wall_block",
@@ -527,20 +527,20 @@
    "rotY": 0
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_s",
    "pos": [
     -46,
     10
    ],
-   "rotY": 90
+   "rotY": 85
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp_l",
    "pos": [
     -24,
     16
    ],
-   "rotY": -90
+   "rotY": 272
   },
   {
    "module": "wall_block",
@@ -615,23 +615,23 @@
    "rotY": 0
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp_s",
    "pos": [
     -50,
     26
    ],
-   "rotY": 120
+   "rotY": 118
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp",
    "pos": [
     -14,
     -82
    ],
-   "rotY": -35
+   "rotY": 330
   },
   {
-   "module": "shop_unit",
+   "module": "hf_cafe_corner",
    "pos": [
     -5,
     42
@@ -639,7 +639,7 @@
    "rotY": 90
   },
   {
-   "module": "shop_unit",
+   "module": "hf_shop",
    "pos": [
     22,
     49
@@ -663,7 +663,7 @@
    "rotY": 180
   },
   {
-   "module": "shop_unit",
+   "module": "hf_shop",
    "pos": [
     -5,
     57
@@ -671,7 +671,7 @@
    "rotY": 90
   },
   {
-   "module": "shop_unit",
+   "module": "hf_cafe_corner",
    "pos": [
     22,
     64
@@ -695,7 +695,7 @@
    "rotY": 180
   },
   {
-   "module": "shop_unit",
+   "module": "hf_shop",
    "pos": [
     -5,
     72
@@ -719,7 +719,7 @@
    "rotY": 180
   },
   {
-   "module": "shop_unit",
+   "module": "hf_cafe_corner",
    "pos": [
     -5,
     87
@@ -727,7 +727,7 @@
    "rotY": 90
   },
   {
-   "module": "shop_unit",
+   "module": "hf_shop",
    "pos": [
     22,
     94
@@ -751,7 +751,7 @@
    "rotY": 180
   },
   {
-   "module": "shop_unit",
+   "module": "hf_shop",
    "pos": [
     -5,
     102
@@ -759,7 +759,7 @@
    "rotY": 90
   },
   {
-   "module": "shop_unit",
+   "module": "hf_cafe_corner",
    "pos": [
     22,
     109
@@ -783,7 +783,7 @@
    "rotY": 180
   },
   {
-   "module": "konbini",
+   "module": "hf_shop",
    "pos": [
     -8,
     116
@@ -975,7 +975,7 @@
    "rotY": 0
   },
   {
-   "module": "shop_unit",
+   "module": "hf_cafe_corner",
    "pos": [
     24,
     138
@@ -1135,28 +1135,28 @@
    "rotY": 0
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp_l",
    "pos": [
     66,
     -6
    ],
-   "rotY": 0
+   "rotY": 1
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp",
    "pos": [
     77,
     -6
    ],
-   "rotY": 0
+   "rotY": 357
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp_s",
    "pos": [
     88,
     -6
    ],
-   "rotY": 0
+   "rotY": 4
   },
   {
    "module": "wall_block",
@@ -1399,7 +1399,7 @@
    "rotY": 0
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp_l",
    "pos": [
     0.1,
     -95.7
@@ -1407,20 +1407,20 @@
    "rotY": 88.60037538222969
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp_s",
    "pos": [
     15.4,
     -109.3
    ],
-   "rotY": 272.14674171060324
+   "rotY": 268.14674171060324
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp",
    "pos": [
     -1,
     -121.7
    ],
-   "rotY": 91.1941311340779
+   "rotY": 94.1941311340779
   },
   {
    "module": "hedge",
@@ -1439,20 +1439,20 @@
    "rotY": 0
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_l",
    "pos": [
     -1.1,
     -134.7
    ],
-   "rotY": 90.89182649925351
+   "rotY": 89.89182649925351
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp",
    "pos": [
     15.3,
     -135.3
    ],
-   "rotY": 268.37732867337763
+   "rotY": 263.37732867337763
   },
   {
    "module": "hedge",
@@ -1463,12 +1463,12 @@
    "rotY": 272
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp_s",
    "pos": [
     13.8,
     -148.3
    ],
-   "rotY": 274.00643043220043
+   "rotY": 276.00643043220043
   },
   {
    "module": "tree",
@@ -1479,12 +1479,12 @@
    "rotY": 0
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_l",
    "pos": [
     11.8,
     -174.7
    ],
-   "rotY": 278.0716511979699
+   "rotY": 276.0716511979699
   },
   {
    "module": "wall_block",
@@ -1503,12 +1503,12 @@
    "rotY": 0
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_s",
    "pos": [
     -11.2,
     -224
    ],
-   "rotY": 100.94791078008711
+   "rotY": 105.94791078008711
   },
   {
    "module": "wall_block",
@@ -1519,12 +1519,12 @@
    "rotY": 280
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp",
    "pos": [
     4,
     -226.6
    ],
-   "rotY": 276.2144276406616
+   "rotY": 277.2144276406616
   },
   {
    "module": "wall_block",
@@ -1535,20 +1535,20 @@
    "rotY": 280
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_l",
    "pos": [
     -14.2,
     -236.7
    ],
-   "rotY": 103.80395759828389
+   "rotY": 100.80395759828389
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp",
    "pos": [
     2.8,
     -239.6
    ],
-   "rotY": 281.1712153106928
+   "rotY": 285.1712153106928
   },
   {
    "module": "wall_block",
@@ -1647,7 +1647,7 @@
    "rotY": 100
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_s",
    "pos": [
     -18.5,
     -145.6
@@ -1655,20 +1655,20 @@
    "rotY": 356.1686563640833
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp_l",
    "pos": [
     -19.8,
     -131.4
    ],
-   "rotY": 172.16345306299627
+   "rotY": 168.16345306299627
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_s",
    "pos": [
     -5.6,
     -145.4
    ],
-   "rotY": 354.9031292833388
+   "rotY": 357.9031292833388
   },
   {
    "module": "hedge",
@@ -1679,20 +1679,20 @@
    "rotY": 175
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp",
    "pos": [
     -6.8,
     -130.2
    ],
-   "rotY": 176.739864513278
+   "rotY": 175.739864513278
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp_l",
    "pos": [
     6.2,
     -129.1
    ],
-   "rotY": 173.72207588888705
+   "rotY": 168.72207588888705
   },
   {
    "module": "tree",
@@ -1703,12 +1703,12 @@
    "rotY": 0
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp",
    "pos": [
     19.1,
     -128.3
    ],
-   "rotY": 177.778501117602
+   "rotY": 179.778501117602
   },
   {
    "module": "wall_block",
@@ -1719,28 +1719,28 @@
    "rotY": 175
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp_s",
    "pos": [
     32.1,
     -126.7
    ],
-   "rotY": 178.21592298150063
+   "rotY": 176.21592298150063
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_l",
    "pos": [
     46.1,
     -141.6
    ],
-   "rotY": 354.1049332972616
+   "rotY": 359.1049332972616
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_s",
    "pos": [
     45.2,
     -125.6
    ],
-   "rotY": 179.77197881415486
+   "rotY": 180.77197881415486
   },
   {
    "module": "hedge",
@@ -1759,12 +1759,12 @@
    "rotY": 0
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp",
    "pos": [
     58.1,
     -124.4
    ],
-   "rotY": 174.4863429237157
+   "rotY": 171.4863429237157
   },
   {
    "module": "wall_block",
@@ -1775,12 +1775,12 @@
    "rotY": 177
   },
   {
-   "module": "house_small",
+   "module": "hf_house_jp_l",
    "pos": [
     72,
     -139.2
    ],
-   "rotY": 354.4478750359267
+   "rotY": 358.4478750359267
   },
   {
    "module": "hedge",
@@ -1791,7 +1791,7 @@
    "rotY": 177
   },
   {
-   "module": "house_two_story",
+   "module": "hf_house_jp",
    "pos": [
     71.2,
     -124.5
@@ -1879,76 +1879,76 @@
    "rotY": 87
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp_s",
    "pos": [
     77.2,
     16.1
    ],
-   "rotY": 338
+   "rotY": 334
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp_l",
    "pos": [
     90.2,
     21.5
    ],
-   "rotY": 338
+   "rotY": 341
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp_s",
    "pos": [
     103.1,
     26.8
    ],
-   "rotY": 338
+   "rotY": 337
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp",
    "pos": [
     117.9,
     37
    ],
-   "rotY": 308
+   "rotY": 303
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp_l",
    "pos": [
     126.5,
     48.1
    ],
-   "rotY": 308
+   "rotY": 310
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp",
    "pos": [
     136.3,
     62.1
    ],
-   "rotY": 286
+   "rotY": 284
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp_s",
    "pos": [
     140.1,
     75.6
    ],
-   "rotY": 286
+   "rotY": 291
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp_l",
    "pos": [
     143.8,
     89.1
    ],
-   "rotY": 286
+   "rotY": 287
   },
   {
-   "module": "house_western",
+   "module": "hf_house_jp_s",
    "pos": [
     143,
     133.8
    ],
-   "rotY": 264
+   "rotY": 261
   },
   {
    "module": "guardrail",
@@ -2543,7 +2543,7 @@
    "rotY": 20
   },
   {
-   "module": "konbini",
+   "module": "hf_shop",
    "pos": [
     46,
     138
