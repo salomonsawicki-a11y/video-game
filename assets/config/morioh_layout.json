@@ -2,12 +2,12 @@
  "name": "Morioh-cho",
  "version": 1,
  "spawns": {
-  "town_center": {
+  "station": {
    "pos": [
-    6,
-    52
+    2,
+    46
    ],
-   "yaw": 170
+   "yaw": 270
   },
   "shopping_street": {
    "pos": [
@@ -44,19 +44,19 @@
    ],
    "yaw": 180
   },
-  "north_fields": {
+  "school": {
    "pos": [
-    4,
-    -168
+    52,
+    26
    ],
-   "yaw": 0
+   "yaw": 120
   },
   "seaside": {
    "pos": [
     126,
     60
    ],
-   "yaw": 160
+   "yaw": 200
   }
  },
  "roads": [
@@ -291,25 +291,31 @@
      70
     ]
    ]
+  },
+  {
+   "name": "seaview_lane",
+   "width": 5,
+   "points": [
+    [
+     -6,
+     96
+    ],
+    [
+     -30,
+     106
+    ],
+    [
+     -44,
+     120
+    ],
+    [
+     -38,
+     136
+    ]
+   ]
   }
  ],
  "placements": [
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    -46,
-    -70
-   ],
-   "rotY": 92
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    -24,
-    -64
-   ],
-   "rotY": 268
-  },
   {
    "module": "wall_block",
    "pos": [
@@ -333,22 +339,6 @@
     -71
    ],
    "rotY": 90
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    -46,
-    -54
-   ],
-   "rotY": 95
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    -24,
-    -48
-   ],
-   "rotY": 271
   },
   {
    "module": "wall_block",
@@ -391,22 +381,6 @@
    "rotY": 0
   },
   {
-   "module": "hf_house_jp_s",
-   "pos": [
-    -46,
-    -38
-   ],
-   "rotY": 87
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    -24,
-    -32
-   ],
-   "rotY": 274
-  },
-  {
    "module": "wall_block",
    "pos": [
     -40.5,
@@ -429,22 +403,6 @@
     -39
    ],
    "rotY": 90
-  },
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    -46,
-    -22
-   ],
-   "rotY": 90
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    -24,
-    -16
-   ],
-   "rotY": 266
   },
   {
    "module": "wall_block",
@@ -479,22 +437,6 @@
    "rotY": 0
   },
   {
-   "module": "hf_house_jp_l",
-   "pos": [
-    -46,
-    -6
-   ],
-   "rotY": 93
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    -24,
-    0
-   ],
-   "rotY": 269
-  },
-  {
    "module": "wall_block",
    "pos": [
     -40.5,
@@ -525,22 +467,6 @@
     -4
    ],
    "rotY": 0
-  },
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    -46,
-    10
-   ],
-   "rotY": 85
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    -24,
-    16
-   ],
-   "rotY": 272
   },
   {
    "module": "wall_block",
@@ -615,38 +541,6 @@
    "rotY": 0
   },
   {
-   "module": "hf_house_jp_s",
-   "pos": [
-    -50,
-    26
-   ],
-   "rotY": 118
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    -14,
-    -82
-   ],
-   "rotY": 330
-  },
-  {
-   "module": "hf_cafe_corner",
-   "pos": [
-    -5,
-    42
-   ],
-   "rotY": 90
-  },
-  {
-   "module": "hf_shop",
-   "pos": [
-    22,
-    49
-   ],
-   "rotY": -90
-  },
-  {
    "module": "lamp_post",
    "pos": [
     3.5,
@@ -663,44 +557,12 @@
    "rotY": 180
   },
   {
-   "module": "hf_shop",
-   "pos": [
-    -5,
-    57
-   ],
-   "rotY": 90
-  },
-  {
-   "module": "hf_cafe_corner",
-   "pos": [
-    22,
-    64
-   ],
-   "rotY": -90
-  },
-  {
    "module": "lamp_post",
    "pos": [
     3.5,
     60
    ],
    "rotY": 0
-  },
-  {
-   "module": "lamp_post",
-   "pos": [
-    13.5,
-    67
-   ],
-   "rotY": 180
-  },
-  {
-   "module": "hf_shop",
-   "pos": [
-    -5,
-    72
-   ],
-   "rotY": 90
   },
   {
    "module": "lamp_post",
@@ -719,52 +581,12 @@
    "rotY": 180
   },
   {
-   "module": "hf_cafe_corner",
-   "pos": [
-    -5,
-    87
-   ],
-   "rotY": 90
-  },
-  {
-   "module": "hf_shop",
-   "pos": [
-    22,
-    94
-   ],
-   "rotY": -90
-  },
-  {
    "module": "lamp_post",
    "pos": [
     3.5,
     90
    ],
    "rotY": 0
-  },
-  {
-   "module": "lamp_post",
-   "pos": [
-    13.5,
-    97
-   ],
-   "rotY": 180
-  },
-  {
-   "module": "hf_shop",
-   "pos": [
-    -5,
-    102
-   ],
-   "rotY": 90
-  },
-  {
-   "module": "hf_cafe_corner",
-   "pos": [
-    22,
-    109
-   ],
-   "rotY": -90
   },
   {
    "module": "lamp_post",
@@ -783,14 +605,6 @@
    "rotY": 180
   },
   {
-   "module": "hf_shop",
-   "pos": [
-    -8,
-    116
-   ],
-   "rotY": 90
-  },
-  {
    "module": "vending_machine",
    "pos": [
     0.5,
@@ -799,58 +613,10 @@
    "rotY": 90
   },
   {
-   "module": "vending_machine",
-   "pos": [
-    17,
-    55
-   ],
-   "rotY": -90
-  },
-  {
    "module": "car_parked",
    "pos": [
     15.5,
     46
-   ],
-   "rotY": 0
-  },
-  {
-   "module": "car_parked",
-   "pos": [
-    15.5,
-    68
-   ],
-   "rotY": 0
-  },
-  {
-   "module": "car_parked",
-   "pos": [
-    15.5,
-    90
-   ],
-   "rotY": 0
-  },
-  {
-   "module": "power_pole",
-   "pos": [
-    18.5,
-    40
-   ],
-   "rotY": 0
-  },
-  {
-   "module": "power_pole",
-   "pos": [
-    18.5,
-    64
-   ],
-   "rotY": 0
-  },
-  {
-   "module": "power_pole",
-   "pos": [
-    18.5,
-    88
    ],
    "rotY": 0
   },
@@ -973,14 +739,6 @@
     158
    ],
    "rotY": 0
-  },
-  {
-   "module": "hf_cafe_corner",
-   "pos": [
-    24,
-    138
-   ],
-   "rotY": 180
   },
   {
    "module": "vending_machine",
@@ -1133,30 +891,6 @@
     77.5
    ],
    "rotY": 0
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    66,
-    -6
-   ],
-   "rotY": 1
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    77,
-    -6
-   ],
-   "rotY": 357
-  },
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    88,
-    -6
-   ],
-   "rotY": 4
   },
   {
    "module": "wall_block",
@@ -1313,14 +1047,6 @@
   {
    "module": "tree",
    "pos": [
-    62,
-    16
-   ],
-   "rotY": 0
-  },
-  {
-   "module": "tree",
-   "pos": [
     74,
     16
    ],
@@ -1399,30 +1125,6 @@
    "rotY": 0
   },
   {
-   "module": "hf_house_jp_l",
-   "pos": [
-    0.1,
-    -95.7
-   ],
-   "rotY": 88.60037538222969
-  },
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    15.4,
-    -109.3
-   ],
-   "rotY": 268.14674171060324
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    -1,
-    -121.7
-   ],
-   "rotY": 94.1941311340779
-  },
-  {
    "module": "hedge",
    "pos": [
     2.6,
@@ -1439,22 +1141,6 @@
    "rotY": 0
   },
   {
-   "module": "hf_house_jp_l",
-   "pos": [
-    -1.1,
-    -134.7
-   ],
-   "rotY": 89.89182649925351
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    15.3,
-    -135.3
-   ],
-   "rotY": 263.37732867337763
-  },
-  {
    "module": "hedge",
    "pos": [
     11,
@@ -1463,28 +1149,12 @@
    "rotY": 272
   },
   {
-   "module": "hf_house_jp_s",
-   "pos": [
-    13.8,
-    -148.3
-   ],
-   "rotY": 276.00643043220043
-  },
-  {
    "module": "tree",
    "pos": [
     -3.7,
     -160
    ],
    "rotY": 0
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    11.8,
-    -174.7
-   ],
-   "rotY": 276.0716511979699
   },
   {
    "module": "wall_block",
@@ -1503,14 +1173,6 @@
    "rotY": 0
   },
   {
-   "module": "hf_house_jp_s",
-   "pos": [
-    -11.2,
-    -224
-   ],
-   "rotY": 105.94791078008711
-  },
-  {
    "module": "wall_block",
    "pos": [
     -7.8,
@@ -1519,36 +1181,12 @@
    "rotY": 280
   },
   {
-   "module": "hf_house_jp",
-   "pos": [
-    4,
-    -226.6
-   ],
-   "rotY": 277.2144276406616
-  },
-  {
    "module": "wall_block",
    "pos": [
     0.9,
     -226.1
    ],
    "rotY": 280
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    -14.2,
-    -236.7
-   ],
-   "rotY": 100.80395759828389
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    2.8,
-    -239.6
-   ],
-   "rotY": 285.1712153106928
   },
   {
    "module": "wall_block",
@@ -1647,52 +1285,12 @@
    "rotY": 100
   },
   {
-   "module": "hf_house_jp_s",
-   "pos": [
-    -18.5,
-    -145.6
-   ],
-   "rotY": 356.1686563640833
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    -19.8,
-    -131.4
-   ],
-   "rotY": 168.16345306299627
-  },
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    -5.6,
-    -145.4
-   ],
-   "rotY": 357.9031292833388
-  },
-  {
    "module": "hedge",
    "pos": [
     -5.9,
     -141.4
    ],
    "rotY": 175
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    -6.8,
-    -130.2
-   ],
-   "rotY": 175.739864513278
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    6.2,
-    -129.1
-   ],
-   "rotY": 168.72207588888705
   },
   {
    "module": "tree",
@@ -1703,44 +1301,12 @@
    "rotY": 0
   },
   {
-   "module": "hf_house_jp",
-   "pos": [
-    19.1,
-    -128.3
-   ],
-   "rotY": 179.778501117602
-  },
-  {
    "module": "wall_block",
    "pos": [
     19.4,
     -131.6
    ],
    "rotY": 175
-  },
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    32.1,
-    -126.7
-   ],
-   "rotY": 176.21592298150063
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    46.1,
-    -141.6
-   ],
-   "rotY": 359.1049332972616
-  },
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    45.2,
-    -125.6
-   ],
-   "rotY": 180.77197881415486
   },
   {
    "module": "hedge",
@@ -1759,14 +1325,6 @@
    "rotY": 0
   },
   {
-   "module": "hf_house_jp",
-   "pos": [
-    58.1,
-    -124.4
-   ],
-   "rotY": 171.4863429237157
-  },
-  {
    "module": "wall_block",
    "pos": [
     58.4,
@@ -1775,28 +1333,12 @@
    "rotY": 177
   },
   {
-   "module": "hf_house_jp_l",
-   "pos": [
-    72,
-    -139.2
-   ],
-   "rotY": 358.4478750359267
-  },
-  {
    "module": "hedge",
    "pos": [
     71.8,
     -135.9
    ],
    "rotY": 177
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    71.2,
-    -124.5
-   ],
-   "rotY": 177.14211253263056
   },
   {
    "module": "lamp_post",
@@ -1877,78 +1419,6 @@
     -130.6
    ],
    "rotY": 87
-  },
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    77.2,
-    16.1
-   ],
-   "rotY": 334
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    90.2,
-    21.5
-   ],
-   "rotY": 341
-  },
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    103.1,
-    26.8
-   ],
-   "rotY": 337
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    117.9,
-    37
-   ],
-   "rotY": 303
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    126.5,
-    48.1
-   ],
-   "rotY": 310
-  },
-  {
-   "module": "hf_house_jp",
-   "pos": [
-    136.3,
-    62.1
-   ],
-   "rotY": 284
-  },
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    140.1,
-    75.6
-   ],
-   "rotY": 291
-  },
-  {
-   "module": "hf_house_jp_l",
-   "pos": [
-    143.8,
-    89.1
-   ],
-   "rotY": 287
-  },
-  {
-   "module": "hf_house_jp_s",
-   "pos": [
-    143,
-    133.8
-   ],
-   "rotY": 261
   },
   {
    "module": "guardrail",
@@ -2425,22 +1895,6 @@
   {
    "module": "tree",
    "pos": [
-    -113.7,
-    91.7
-   ],
-   "rotY": 359
-  },
-  {
-   "module": "tree",
-   "pos": [
-    -114.9,
-    101.5
-   ],
-   "rotY": 269
-  },
-  {
-   "module": "tree",
-   "pos": [
     -114.9,
     109.2
    ],
@@ -2541,14 +1995,6 @@
     173.6
    ],
    "rotY": 20
-  },
-  {
-   "module": "hf_shop",
-   "pos": [
-    46,
-    138
-   ],
-   "rotY": 160
   },
   {
    "module": "vending_machine",
@@ -2655,15 +2101,23 @@
    "rotY": 90
   },
   {
-   "module": "hf_house_jp",
+   "module": "morioh_station",
    "pos": [
-    24,
-    -146
+    -14,
+    46
    ],
-   "rotY": 250
+   "rotY": 90
   },
   {
-   "module": "hf_house_jp",
+   "module": "koban",
+   "pos": [
+    -2,
+    32
+   ],
+   "rotY": 45
+  },
+  {
+   "module": "higashikata_house",
    "pos": [
     15,
     36
@@ -2671,12 +2125,52 @@
    "rotY": 265
   },
   {
-   "module": "hf_depato",
+   "module": "owson",
+   "pos": [
+    17,
+    60
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "salon_cinderella",
+   "pos": [
+    17,
+    70
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "kameyu",
    "pos": [
     24,
     79
    ],
    "rotY": 270
+  },
+  {
+   "module": "st_gentleman",
+   "pos": [
+    16,
+    92
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "hf_depato",
+   "pos": [
+    26,
+    108
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "deux_magots",
+   "pos": [
+    -6,
+    94
+   ],
+   "rotY": 90
   },
   {
    "module": "hf_cafe_corner",
@@ -2685,6 +2179,518 @@
     79.5
    ],
    "rotY": 90
+  },
+  {
+   "module": "trattoria",
+   "pos": [
+    18,
+    124
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "budogaoka_school",
+   "pos": [
+    64,
+    10
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "grand_hotel",
+   "pos": [
+    104,
+    52
+   ],
+   "rotY": 150
+  },
+  {
+   "module": "rohan_house",
+   "pos": [
+    -116,
+    96
+   ],
+   "rotY": 160
+  },
+  {
+   "module": "kira_house",
+   "pos": [
+    46,
+    -145
+   ],
+   "rotY": 5
+  },
+  {
+   "module": "angelo_rock",
+   "pos": [
+    -70,
+    62
+   ],
+   "rotY": 30
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -27.9,
+    -77.1
+   ],
+   "rotY": 267
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -43.9,
+    -76.9
+   ],
+   "rotY": 93
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -27.6,
+    -63.2
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    -43.6,
+    -62.9
+   ],
+   "rotY": 95
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -27.4,
+    -49.2
+   ],
+   "rotY": 269
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -43.4,
+    -48.9
+   ],
+   "rotY": 93
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -27.1,
+    -35.2
+   ],
+   "rotY": 271
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -43.1,
+    -34.9
+   ],
+   "rotY": 93
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -26.9,
+    -23.2
+   ],
+   "rotY": 274
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    -42.9,
+    -22.8
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -26.3,
+    4.8
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -26,
+    18.8
+   ],
+   "rotY": 269
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -42,
+    19.2
+   ],
+   "rotY": 94
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -24.5,
+    24.9
+   ],
+   "rotY": 288
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -36.7,
+    42.3
+   ],
+   "rotY": 106
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    -27.5,
+    54.6
+   ],
+   "rotY": 145
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -16.6,
+    63.4
+   ],
+   "rotY": 137
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -0.8,
+    -102.7
+   ],
+   "rotY": 88
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    16.2,
+    -103.3
+   ],
+   "rotY": 275
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -1.3,
+    -116.7
+   ],
+   "rotY": 95
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    15.7,
+    -117.3
+   ],
+   "rotY": 271
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    15.2,
+    -131.3
+   ],
+   "rotY": 275
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -2.3,
+    -144.7
+   ],
+   "rotY": 96
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    14.7,
+    -145.3
+   ],
+   "rotY": 275
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    13.7,
+    -157.9
+   ],
+   "rotY": 278
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -4.7,
+    -170
+   ],
+   "rotY": 94
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    12.2,
+    -171.8
+   ],
+   "rotY": 273
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    -6.2,
+    -183.9
+   ],
+   "rotY": 99
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    9.1,
+    -199.6
+   ],
+   "rotY": 275
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -9.6,
+    -210.5
+   ],
+   "rotY": 101
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -11.9,
+    -224.3
+   ],
+   "rotY": 101
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    4.9,
+    -227.1
+   ],
+   "rotY": 282
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -14.3,
+    -238.1
+   ],
+   "rotY": 103
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    2.5,
+    -240.9
+   ],
+   "rotY": 281
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -51.7,
+    -133.4
+   ],
+   "rotY": 175
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -37.8,
+    -132.2
+   ],
+   "rotY": 173
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -22.4,
+    -146.9
+   ],
+   "rotY": 356
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -4.4,
+    -145.4
+   ],
+   "rotY": 354
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -5.7,
+    -129.5
+   ],
+   "rotY": 172
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    9.6,
+    -144.3
+   ],
+   "rotY": 357
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    8.3,
+    -128.4
+   ],
+   "rotY": 173
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    23.5,
+    -143.2
+   ],
+   "rotY": 356
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    22.3,
+    -127.2
+   ],
+   "rotY": 178
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    36.2,
+    -126.1
+   ],
+   "rotY": 176
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    44.5,
+    -125.6
+   ],
+   "rotY": 177
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    58.5,
+    -124.8
+   ],
+   "rotY": 174
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -28.5,
+    96.7
+   ],
+   "rotY": 26
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -40.6,
+    105.3
+   ],
+   "rotY": 45
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    84.2,
+    19
+   ],
+   "rotY": 338
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    98,
+    24.7
+   ],
+   "rotY": 338
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    119.3,
+    38.8
+   ],
+   "rotY": 308
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    128.5,
+    50.7
+   ],
+   "rotY": 308
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    138.2,
+    69
+   ],
+   "rotY": 286
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    142.2,
+    83.4
+   ],
+   "rotY": 286
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    144.1,
+    123.3
+   ],
+   "rotY": 264
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    142.5,
+    138.2
+   ],
+   "rotY": 264
+  },
+  {
+   "module": "hf_shop",
+   "pos": [
+    -2.3,
+    63.8
+   ],
+   "rotY": 104
+  },
+  {
+   "module": "hf_cafe_corner",
+   "pos": [
+    1.8,
+    114.3
+   ],
+   "rotY": 92
   }
  ]
 }

@@ -16,11 +16,11 @@
   {
    "id": "hf_house_jp",
    "glb": "./assets/models/higgsfield/house_jp.glb",
-   "height": 7.0,
+   "height": 7,
    "collider": [
-    4.0,
-    7.0,
-    4.0
+    4,
+    7,
+    4
    ],
    "source": "Higgsfield sam_3_3d 02481cfb"
   },
@@ -60,13 +60,109 @@
   {
    "id": "hf_depato",
    "glb": "./assets/models/higgsfield/depato.glb",
-   "height": 15.0,
+   "height": 15,
    "collider": [
     7.5,
-    15.0,
+    15,
     7.5
    ],
    "source": "Higgsfield sam_3_3d a2ab439c"
+  },
+  {
+   "id": "morioh_station",
+   "glb": "./assets/models/higgsfield/canon/station.glb",
+   "height": 8,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "higashikata_house",
+   "glb": "./assets/models/higgsfield/canon/higashikata.glb",
+   "height": 8.5,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "kameyu",
+   "glb": "./assets/models/higgsfield/canon/kameyu.glb",
+   "height": 18,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "owson",
+   "glb": "./assets/models/higgsfield/canon/owson.glb",
+   "height": 4.5,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "budogaoka_school",
+   "glb": "./assets/models/higgsfield/canon/school.glb",
+   "height": 12,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "rohan_house",
+   "glb": "./assets/models/higgsfield/canon/rohan_house.glb",
+   "height": 10,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "kira_house",
+   "glb": "./assets/models/higgsfield/canon/kira_house.glb",
+   "height": 7.5,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "grand_hotel",
+   "glb": "./assets/models/higgsfield/canon/grand_hotel.glb",
+   "height": 26,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "deux_magots",
+   "glb": "./assets/models/higgsfield/canon/deux_magots.glb",
+   "height": 8,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "st_gentleman",
+   "glb": "./assets/models/higgsfield/canon/bakery.glb",
+   "height": 5,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "trattoria",
+   "glb": "./assets/models/higgsfield/canon/trattoria.glb",
+   "height": 5.5,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "salon_cinderella",
+   "glb": "./assets/models/higgsfield/canon/salon.glb",
+   "height": 7,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "koban",
+   "glb": "./assets/models/higgsfield/canon/koban.glb",
+   "height": 6,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "angelo_rock",
+   "glb": "./assets/models/higgsfield/canon/angelo_rock.glb",
+   "height": 3,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "suburb_a",
+   "glb": "./assets/models/higgsfield/canon/suburb_a.glb",
+   "height": 8,
+   "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "suburb_b",
+   "glb": "./assets/models/higgsfield/canon/suburb_b.glb",
+   "height": 8,
+   "source": "Higgsfield sam_3_3d (canon set)"
   }
  ]
 }
