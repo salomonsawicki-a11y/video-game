@@ -313,6 +313,82 @@
      136
     ]
    ]
+  },
+  {
+   "name": "higashi_lane",
+   "width": 5,
+   "points": [
+    [
+     24,
+     32
+    ],
+    [
+     44,
+     44
+    ],
+    [
+     58,
+     62
+    ],
+    [
+     62,
+     82
+    ]
+   ]
+  },
+  {
+   "name": "higashi_shita",
+   "width": 4,
+   "points": [
+    [
+     62,
+     82
+    ],
+    [
+     84,
+     96
+    ],
+    [
+     102,
+     106
+    ]
+   ]
+  },
+  {
+   "name": "nishi_spur",
+   "width": 4,
+   "points": [
+    [
+     -34,
+     20
+    ],
+    [
+     -56,
+     30
+    ],
+    [
+     -74,
+     42
+    ]
+   ]
+  },
+  {
+   "name": "kita_cross",
+   "width": 5,
+   "points": [
+    [
+     6,
+     -150
+    ],
+    [
+     -28,
+     -158
+    ],
+    [
+     -58,
+     -152
+    ]
+   ]
   }
  ],
  "placements": [
@@ -544,14 +620,6 @@
    "module": "prop_lamp",
    "pos": [
     3.5,
-    45
-   ],
-   "rotY": 0
-  },
-  {
-   "module": "prop_lamp",
-   "pos": [
-    3.5,
     60
    ],
    "rotY": 0
@@ -661,14 +729,6 @@
    "rotY": 90
   },
   {
-   "module": "prop_pine",
-   "pos": [
-    -80,
-    76
-   ],
-   "rotY": 0
-  },
-  {
    "module": "prop_tree",
    "pos": [
     -83.5,
@@ -739,14 +799,6 @@
     82
    ],
    "rotY": 180
-  },
-  {
-   "module": "prop_lamp",
-   "pos": [
-    -80,
-    76
-   ],
-   "rotY": 90
   },
   {
    "module": "hedge",
@@ -2643,6 +2695,1390 @@
     16
    ],
    "rotY": 0
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    16.3,
+    -89.7
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    15.9,
+    -77.7
+   ],
+   "rotY": 267
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    -1.1,
+    -78.3
+   ],
+   "rotY": 89
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    15.4,
+    -65.7
+   ],
+   "rotY": 268
+  },
+  {
+   "module": "higashikata_house",
+   "pos": [
+    -1.6,
+    -66.3
+   ],
+   "rotY": 85
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    15,
+    -53.7
+   ],
+   "rotY": 271
+  },
+  {
+   "module": "hf_house_jp_l",
+   "pos": [
+    -2,
+    -54.3
+   ],
+   "rotY": 88
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    14.6,
+    -41.7
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -2.4,
+    -42.3
+   ],
+   "rotY": 85
+  },
+  {
+   "module": "hf_house_jp_s",
+   "pos": [
+    13.9,
+    -21.7
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -3.1,
+    -22.3
+   ],
+   "rotY": 91
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    13.5,
+    -9.7
+   ],
+   "rotY": 272
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    -3.5,
+    -10.3
+   ],
+   "rotY": 88
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    13.1,
+    2.3
+   ],
+   "rotY": 269
+  },
+  {
+   "module": "higashikata_house",
+   "pos": [
+    -3.9,
+    1.7
+   ],
+   "rotY": 91
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    12.7,
+    14.3
+   ],
+   "rotY": 268
+  },
+  {
+   "module": "hf_house_jp_l",
+   "pos": [
+    -4.3,
+    13.7
+   ],
+   "rotY": 88
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    15.7,
+    61.2
+   ],
+   "rotY": 275
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    17.7,
+    101.6
+   ],
+   "rotY": 275
+  },
+  {
+   "module": "hf_house_jp_s",
+   "pos": [
+    -21.9,
+    35.5
+   ],
+   "rotY": 283
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -38.8,
+    60.2
+   ],
+   "rotY": 213
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -47.1,
+    47.7
+   ],
+   "rotY": 33
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    -52,
+    69.6
+   ],
+   "rotY": 220
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -61.4,
+    57.9
+   ],
+   "rotY": 41
+  },
+  {
+   "module": "higashikata_house",
+   "pos": [
+    -61.4,
+    77.1
+   ],
+   "rotY": 220
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    25.5,
+    17.4
+   ],
+   "rotY": 0
+  },
+  {
+   "module": "hf_house_jp_l",
+   "pos": [
+    37.5,
+    16.6
+   ],
+   "rotY": 8
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    46,
+    16.5
+   ],
+   "rotY": 357
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    46,
+    31.5
+   ],
+   "rotY": 182
+  },
+  {
+   "module": "hf_house_jp_s",
+   "pos": [
+    62,
+    31.5
+   ],
+   "rotY": 184
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -39.4,
+    -148.4
+   ],
+   "rotY": 352
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -16.9,
+    -130.4
+   ],
+   "rotY": 177
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    -116.8,
+    73.5
+   ],
+   "rotY": 13
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -136.2,
+    68.7
+   ],
+   "rotY": 338
+  },
+  {
+   "module": "higashikata_house",
+   "pos": [
+    25,
+    41.9
+   ],
+   "rotY": 149
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    35.3,
+    48.1
+   ],
+   "rotY": 149
+  },
+  {
+   "module": "hf_house_jp_l",
+   "pos": [
+    54,
+    43.8
+   ],
+   "rotY": 304
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    61.4,
+    53.3
+   ],
+   "rotY": 304
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    48.7,
+    63.1
+   ],
+   "rotY": 125
+  },
+  {
+   "module": "hf_house_jp_s",
+   "pos": [
+    69.4,
+    78.1
+   ],
+   "rotY": 285
+  },
+  {
+   "module": "prop_lamp",
+   "pos": [
+    37.8,
+    36.3
+   ],
+   "rotY": 329
+  },
+  {
+   "module": "prop_lamp",
+   "pos": [
+    49.9,
+    57.1
+   ],
+   "rotY": 128
+  },
+  {
+   "module": "prop_lamp",
+   "pos": [
+    64.1,
+    75.1
+   ],
+   "rotY": 281
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    63,
+    91.5
+   ],
+   "rotY": 149
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    81.2,
+    85.3
+   ],
+   "rotY": 332
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    92.9,
+    92.4
+   ],
+   "rotY": 333
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    85.6,
+    105.5
+   ],
+   "rotY": 151
+  },
+  {
+   "module": "higashikata_house",
+   "pos": [
+    103.4,
+    98.2
+   ],
+   "rotY": 335
+  },
+  {
+   "module": "prop_lamp",
+   "pos": [
+    75.4,
+    87.1
+   ],
+   "rotY": 328
+  },
+  {
+   "module": "prop_lamp",
+   "pos": [
+    94.8,
+    105.3
+   ],
+   "rotY": 151
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -47.3,
+    34.3
+   ],
+   "rotY": 203
+  },
+  {
+   "module": "hf_house_jp_l",
+   "pos": [
+    -56.8,
+    39.6
+   ],
+   "rotY": 216
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -65.2,
+    27.1
+   ],
+   "rotY": 32
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -66.8,
+    46.2
+   ],
+   "rotY": 217
+  },
+  {
+   "module": "hf_house_jp_s",
+   "pos": [
+    -75.1,
+    33.7
+   ],
+   "rotY": 35
+  },
+  {
+   "module": "prop_lamp",
+   "pos": [
+    -45.5,
+    28.4
+   ],
+   "rotY": 204
+  },
+  {
+   "module": "prop_lamp",
+   "pos": [
+    -69.3,
+    35.4
+   ],
+   "rotY": 34
+  },
+  {
+   "module": "suburb_a",
+   "pos": [
+    -13.4,
+    -146.3
+   ],
+   "rotY": 168
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -21.4,
+    -164.7
+   ],
+   "rotY": 348
+  },
+  {
+   "module": "hf_house_jp",
+   "pos": [
+    -35.5,
+    -164.7
+   ],
+   "rotY": 14
+  },
+  {
+   "module": "suburb_b",
+   "pos": [
+    -47.2,
+    -162.3
+   ],
+   "rotY": 7
+  },
+  {
+   "module": "higashikata_house",
+   "pos": [
+    -59,
+    -160
+   ],
+   "rotY": 15
+  },
+  {
+   "module": "prop_lamp",
+   "pos": [
+    -8.4,
+    -149.9
+   ],
+   "rotY": 167
+  },
+  {
+   "module": "prop_lamp",
+   "pos": [
+    -42.4,
+    -158.6
+   ],
+   "rotY": 11
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -172.7,
+    -177.2
+   ],
+   "rotY": 46
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -174.8,
+    -120.6
+   ],
+   "rotY": 156
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -166.1,
+    -86.6
+   ],
+   "rotY": 93
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -174.3,
+    -61
+   ],
+   "rotY": 15
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -173.1,
+    10.6
+   ],
+   "rotY": 302
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -173.8,
+    48.8
+   ],
+   "rotY": 118
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -167.5,
+    75.7
+   ],
+   "rotY": 284
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -168.8,
+    114
+   ],
+   "rotY": 75
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -152.3,
+    -110.4
+   ],
+   "rotY": 290
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -155.3,
+    -52.2
+   ],
+   "rotY": 267
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    -152.8,
+    -51.2
+   ],
+   "rotY": 205
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -156.9,
+    -23.7
+   ],
+   "rotY": 225
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    -154.4,
+    -22.7
+   ],
+   "rotY": 64
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -157.1,
+    -2.4
+   ],
+   "rotY": 74
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -155.1,
+    14.1
+   ],
+   "rotY": 318
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -137.6,
+    -123.8
+   ],
+   "rotY": 83
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -137.6,
+    -38.9
+   ],
+   "rotY": 86
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -138.1,
+    12.7
+   ],
+   "rotY": 307
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -135.2,
+    33.4
+   ],
+   "rotY": 243
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -114.3,
+    -157.3
+   ],
+   "rotY": 236
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -118.4,
+    -19.4
+   ],
+   "rotY": 181
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -119.5,
+    28.4
+   ],
+   "rotY": 162
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -104.7,
+    -177.8
+   ],
+   "rotY": 268
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -100.8,
+    -143.4
+   ],
+   "rotY": 267
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -106.9,
+    -89.4
+   ],
+   "rotY": 4
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -102.7,
+    -56.3
+   ],
+   "rotY": 137
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -103.6,
+    -42.8
+   ],
+   "rotY": 219
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -98.3,
+    8.7
+   ],
+   "rotY": 7
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -106.3,
+    25.2
+   ],
+   "rotY": 319
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -87.2,
+    -173.1
+   ],
+   "rotY": 115
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -81.1,
+    -159.9
+   ],
+   "rotY": 85
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -82.1,
+    -140.4
+   ],
+   "rotY": 254
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -85.7,
+    -93.8
+   ],
+   "rotY": 77
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -84.4,
+    -60.2
+   ],
+   "rotY": 193
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -82.9,
+    -21.4
+   ],
+   "rotY": 162
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    -80.4,
+    -20.4
+   ],
+   "rotY": 217
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -88.3,
+    31.7
+   ],
+   "rotY": 212
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    -84.5,
+    44.8
+   ],
+   "rotY": 232
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    -82,
+    45.8
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -84.2,
+    132.2
+   ],
+   "rotY": 321
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -67.9,
+    -126.2
+   ],
+   "rotY": 77
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -63.5,
+    -34.1
+   ],
+   "rotY": 324
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -68.5,
+    -6.2
+   ],
+   "rotY": 289
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    -68,
+    97
+   ],
+   "rotY": 226
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    -65.5,
+    98
+   ],
+   "rotY": 257
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -71.2,
+    113.1
+   ],
+   "rotY": 140
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -53.8,
+    115.2
+   ],
+   "rotY": 280
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -54.8,
+    131.4
+   ],
+   "rotY": 314
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    -14.4,
+    129.4
+   ],
+   "rotY": 308
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    31.6,
+    -87
+   ],
+   "rotY": 166
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    34.1,
+    -86
+   ],
+   "rotY": 197
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    34.1,
+    -72.8
+   ],
+   "rotY": 325
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    34.8,
+    -36.7
+   ],
+   "rotY": 196
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    37.4,
+    97.5
+   ],
+   "rotY": 165
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    51.5,
+    -179.2
+   ],
+   "rotY": 169
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    47.6,
+    -163
+   ],
+   "rotY": 327
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    50.1,
+    -162
+   ],
+   "rotY": 34
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    47.6,
+    -108.2
+   ],
+   "rotY": 295
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    50.1,
+    -107.2
+   ],
+   "rotY": 335
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    48.8,
+    82.8
+   ],
+   "rotY": 327
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    51.1,
+    118.2
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    72.7,
+    -178.9
+   ],
+   "rotY": 33
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    70.6,
+    -161.8
+   ],
+   "rotY": 179
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    72.1,
+    -109.4
+   ],
+   "rotY": 124
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    65,
+    -88
+   ],
+   "rotY": 71
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    72.6,
+    -23.1
+   ],
+   "rotY": 72
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    86.1,
+    -176.9
+   ],
+   "rotY": 39
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    88.6,
+    -175.9
+   ],
+   "rotY": 170
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    82,
+    -154.8
+   ],
+   "rotY": 69
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    88.5,
+    -108.4
+   ],
+   "rotY": 7
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    81,
+    -59.7
+   ],
+   "rotY": 105
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    83.5,
+    -58.7
+   ],
+   "rotY": 127
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    89.3,
+    -38.3
+   ],
+   "rotY": 88
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    106.8,
+    -158.3
+   ],
+   "rotY": 84
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    100.7,
+    -143.4
+   ],
+   "rotY": 268
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    105.8,
+    -120.8
+   ],
+   "rotY": 246
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    103,
+    -24.2
+   ],
+   "rotY": 71
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    105.5,
+    -23.2
+   ],
+   "rotY": 166
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    105.8,
+    -4.9
+   ],
+   "rotY": 206
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    100,
+    66.9
+   ],
+   "rotY": 200
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    119,
+    -178.2
+   ],
+   "rotY": 118
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    121.5,
+    -177.2
+   ],
+   "rotY": 3
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    122.5,
+    -125.8
+   ],
+   "rotY": 208
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    114.3,
+    -71.1
+   ],
+   "rotY": 206
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    114,
+    -51.5
+   ],
+   "rotY": 130
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    122.6,
+    -7.1
+   ],
+   "rotY": 26
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    135.7,
+    -157.3
+   ],
+   "rotY": 151
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    137.6,
+    -140.7
+   ],
+   "rotY": 130
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    140.4,
+    -90.2
+   ],
+   "rotY": 135
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    134,
+    -56.7
+   ],
+   "rotY": 209
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    136,
+    -18.9
+   ],
+   "rotY": 9
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    134.5,
+    32.7
+   ],
+   "rotY": 226
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    157.5,
+    -173.2
+   ],
+   "rotY": 196
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    156.7,
+    -159.7
+   ],
+   "rotY": 25
+  },
+  {
+   "module": "prop_tree",
+   "pos": [
+    149.4,
+    -109.6
+   ],
+   "rotY": 147
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    148.9,
+    -72.4
+   ],
+   "rotY": 180
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    150.5,
+    -18.6
+   ],
+   "rotY": 192
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    157.8,
+    61.2
+   ],
+   "rotY": 299
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    171.9,
+    -161.4
+   ],
+   "rotY": 92
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    173.7,
+    -108.1
+   ],
+   "rotY": 193
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    176.2,
+    -107.1
+   ],
+   "rotY": 4
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    168.4,
+    -72.2
+   ],
+   "rotY": 67
+  },
+  {
+   "module": "prop_bench",
+   "pos": [
+    170.9,
+    -71.2
+   ],
+   "rotY": 215
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    170,
+    -58
+   ],
+   "rotY": 132
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    173.2,
+    -42.6
+   ],
+   "rotY": 253
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    165.9,
+    -3.4
+   ],
+   "rotY": 25
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    173,
+    14
+   ],
+   "rotY": 65
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    173.8,
+    33
+   ],
+   "rotY": 257
+  },
+  {
+   "module": "prop_pine",
+   "pos": [
+    174.4,
+    82.3
+   ],
+   "rotY": 149
   }
  ]
 }

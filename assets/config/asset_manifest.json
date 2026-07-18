@@ -11,7 +11,8 @@
     6.2,
     3.6
    ],
-   "source": "Higgsfield sam_3_3d 02481cfb"
+   "source": "Higgsfield sam_3_3d 02481cfb",
+   "cull": 340
   },
   {
    "id": "hf_house_jp",
@@ -22,7 +23,8 @@
     7,
     4
    ],
-   "source": "Higgsfield sam_3_3d 02481cfb"
+   "source": "Higgsfield sam_3_3d 02481cfb",
+   "cull": 340
   },
   {
    "id": "hf_house_jp_l",
@@ -33,7 +35,8 @@
     7.8,
     4.5
    ],
-   "source": "Higgsfield sam_3_3d 02481cfb"
+   "source": "Higgsfield sam_3_3d 02481cfb",
+   "cull": 340
   },
   {
    "id": "hf_shop",
@@ -44,7 +47,8 @@
     6.6,
     3.7
    ],
-   "source": "Higgsfield sam_3_3d a3a3a745"
+   "source": "Higgsfield sam_3_3d a3a3a745",
+   "cull": 340
   },
   {
    "id": "hf_cafe_corner",
@@ -55,7 +59,8 @@
     7.5,
     4.2
    ],
-   "source": "Higgsfield sam_3_3d a3a3a745"
+   "source": "Higgsfield sam_3_3d a3a3a745",
+   "cull": 340
   },
   {
    "id": "hf_depato",
@@ -78,7 +83,8 @@
    "id": "higashikata_house",
    "glb": "./assets/models/higgsfield/canon/higashikata.glb",
    "height": 8.5,
-   "source": "Higgsfield sam_3_3d (canon set)"
+   "source": "Higgsfield sam_3_3d (canon set)",
+   "cull": 340
   },
   {
    "id": "kameyu",
@@ -108,7 +114,8 @@
    "id": "kira_house",
    "glb": "./assets/models/higgsfield/canon/kira_house.glb",
    "height": 7.5,
-   "source": "Higgsfield sam_3_3d (canon set)"
+   "source": "Higgsfield sam_3_3d (canon set)",
+   "cull": 340
   },
   {
    "id": "grand_hotel",
@@ -156,20 +163,22 @@
    "id": "suburb_a",
    "glb": "./assets/models/higgsfield/canon/suburb_a.glb",
    "height": 8,
-   "source": "Higgsfield sam_3_3d (canon set)"
+   "source": "Higgsfield sam_3_3d (canon set)",
+   "cull": 340
   },
   {
    "id": "suburb_b",
    "glb": "./assets/models/higgsfield/canon/suburb_b.glb",
    "height": 8,
-   "source": "Higgsfield sam_3_3d (canon set)"
+   "source": "Higgsfield sam_3_3d (canon set)",
+   "cull": 340
   },
   {
    "id": "prop_tree",
    "glb": "./assets/models/higgsfield/props/tree.glb",
    "height": 7.5,
    "source": "Higgsfield sam_3_3d (props set)",
-   "cull": 240,
+   "cull": 210,
    "collider": [
     0.4,
     3.0,
@@ -181,7 +190,7 @@
    "glb": "./assets/models/higgsfield/props/pine.glb",
    "height": 8.0,
    "source": "Higgsfield sam_3_3d (props set)",
-   "cull": 240,
+   "cull": 210,
    "collider": [
     0.4,
     3.0,
