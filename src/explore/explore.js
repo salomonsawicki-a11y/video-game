@@ -9,7 +9,7 @@ import { modes } from '../core/modes.js';
 import { createTerrain } from './terrain.js';
 import { getGroundHeight } from './heightfield.js';
 import { KIT, buildPiece } from './kit.js';
-import { buildTown, spawns, worldColliders } from './town.js';
+import { buildTown, spawns, worldColliders, distCull } from './town.js';
 import { createController } from './controller.js';
 import { createSky, buildSkyEnv } from './sky.js';
 import { createWater } from './water.js';
@@ -84,6 +84,12 @@ function init() {
     const scatter = createScatter(worldColliders);
     scene.add(scatter.group);
     frameUpdaters.push(() => scatter.update(camera.position));
+    frameUpdaters.push(() => {   // drop distant high-poly props
+      for (const c of distCull) {
+        const vis = Math.hypot(camera.position.x - c.x, camera.position.z - c.z) < c.d;
+        if (c.obj.visible !== vis) c.obj.visible = vis;
+      }
+    });
     if (window.__perf) window.__perf.scatter = scatter.count;
     const s0 = spawns.town_center;
     if (s0) {

@@ -10,6 +10,7 @@ import { getGroundHeight } from './heightfield.js';
 
 export const worldColliders = []; // { min:Vector3, max:Vector3 }
 export const spawns = {};         // name -> { pos:Vector3, yaw }
+export const distCull = [];       // { obj, x, z, d } — high-poly props hidden beyond d
 
 // drape a road ribbon over the terrain along a polyline
 function buildRoad(road) {
@@ -199,6 +200,8 @@ export async function buildTown() {
     g.position.set(x, y, z);
     g.rotation.y = (p.rotY || 0) * Math.PI / 180;
     group.add(g);
+    const asset = byId[p.module];
+    if (asset && asset.cull) distCull.push({ obj: g, x, z, d: asset.cull });
     for (const c of colliders) worldColliders.push(worldAABB(c, p.rotY || 0, x, y, z));
   }
 

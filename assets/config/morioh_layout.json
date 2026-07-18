@@ -365,7 +365,7 @@
    "rotY": 90
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     -35,
     -44
@@ -373,7 +373,7 @@
    "rotY": 0
   },
   {
-   "module": "car_parked",
+   "module": "prop_sedan",
    "pos": [
     -33,
     -52
@@ -429,7 +429,7 @@
    "rotY": 90
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     -35,
     -12
@@ -461,7 +461,7 @@
    "rotY": 90
   },
   {
-   "module": "car_parked",
+   "module": "prop_sedan",
    "pos": [
     -33,
     -4
@@ -493,7 +493,7 @@
    "rotY": 90
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     -35,
     20
@@ -541,7 +541,7 @@
    "rotY": 0
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     3.5,
     45
@@ -549,15 +549,7 @@
    "rotY": 0
   },
   {
-   "module": "lamp_post",
-   "pos": [
-    13.5,
-    52
-   ],
-   "rotY": 180
-  },
-  {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     3.5,
     60
@@ -565,7 +557,7 @@
    "rotY": 0
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     3.5,
     75
@@ -573,7 +565,7 @@
    "rotY": 0
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     13.5,
     82
@@ -581,7 +573,7 @@
    "rotY": 180
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     3.5,
     90
@@ -589,7 +581,7 @@
    "rotY": 0
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     3.5,
     105
@@ -597,7 +589,7 @@
    "rotY": 0
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     13.5,
     112
@@ -605,20 +597,12 @@
    "rotY": 180
   },
   {
-   "module": "vending_machine",
+   "module": "prop_vending",
    "pos": [
     0.5,
     108
    ],
    "rotY": 90
-  },
-  {
-   "module": "car_parked",
-   "pos": [
-    15.5,
-    46
-   ],
-   "rotY": 0
   },
   {
    "module": "power_pole",
@@ -627,54 +611,6 @@
     112
    ],
    "rotY": 0
-  },
-  {
-   "module": "guardrail",
-   "pos": [
-    20,
-    152
-   ],
-   "rotY": 12
-  },
-  {
-   "module": "guardrail",
-   "pos": [
-    23.2,
-    152
-   ],
-   "rotY": 12
-  },
-  {
-   "module": "guardrail",
-   "pos": [
-    26.4,
-    152
-   ],
-   "rotY": 12
-  },
-  {
-   "module": "guardrail",
-   "pos": [
-    29.6,
-    152
-   ],
-   "rotY": 12
-  },
-  {
-   "module": "guardrail",
-   "pos": [
-    32.8,
-    152
-   ],
-   "rotY": 12
-  },
-  {
-   "module": "guardrail",
-   "pos": [
-    36,
-    152
-   ],
-   "rotY": 12
   },
   {
    "module": "pier_segment",
@@ -709,39 +645,7 @@
    "rotY": 0
   },
   {
-   "module": "bench",
-   "pos": [
-    30,
-    148
-   ],
-   "rotY": 180
-  },
-  {
-   "module": "bench",
-   "pos": [
-    40,
-    149.5
-   ],
-   "rotY": 180
-  },
-  {
-   "module": "lamp_post",
-   "pos": [
-    35,
-    148.5
-   ],
-   "rotY": 180
-  },
-  {
-   "module": "lamp_post",
-   "pos": [
-    52,
-    158
-   ],
-   "rotY": 0
-  },
-  {
-   "module": "vending_machine",
+   "module": "prop_vending",
    "pos": [
     29.5,
     139
@@ -757,7 +661,7 @@
    "rotY": 90
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -80,
     76
@@ -765,7 +669,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     -83.5,
     83.1
@@ -773,7 +677,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     -92,
     86
@@ -781,7 +685,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -100.5,
     83.1
@@ -789,7 +693,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -104,
     76
@@ -797,7 +701,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -100.5,
     68.9
@@ -805,7 +709,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     -92,
     66
@@ -813,7 +717,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     -83.5,
     68.9
@@ -821,7 +725,7 @@
    "rotY": 0
   },
   {
-   "module": "bench",
+   "module": "prop_bench",
    "pos": [
     -88,
     70
@@ -829,7 +733,7 @@
    "rotY": 0
   },
   {
-   "module": "bench",
+   "module": "prop_bench",
    "pos": [
     -88,
     82
@@ -837,7 +741,7 @@
    "rotY": 180
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     -80,
     76
@@ -1045,7 +949,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     74,
     16
@@ -1053,7 +957,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     86,
     16
@@ -1101,7 +1005,7 @@
    "rotY": 0
   },
   {
-   "module": "bench",
+   "module": "prop_bench",
    "pos": [
     -152,
     -154
@@ -1109,7 +1013,7 @@
    "rotY": 0
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     -146,
     -155
@@ -1117,7 +1021,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -162,
     -150
@@ -1133,7 +1037,7 @@
    "rotY": 272
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     15.7,
     -122.3
@@ -1149,7 +1053,7 @@
    "rotY": 272
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -3.7,
     -160
@@ -1165,7 +1069,7 @@
    "rotY": 276
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     -8.4,
     -198.7
@@ -1197,7 +1101,7 @@
    "rotY": 280
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     4.1,
     -95.9
@@ -1205,7 +1109,7 @@
    "rotY": 92
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     10.9,
     -122.1
@@ -1213,7 +1117,7 @@
    "rotY": 272
   },
   {
-   "module": "car_parked",
+   "module": "prop_sedan",
    "pos": [
     8.9,
     -122.1
@@ -1221,7 +1125,7 @@
    "rotY": 182
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     2.2,
     -147.8
@@ -1237,7 +1141,7 @@
    "rotY": 0
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     7.3,
     -174.2
@@ -1245,7 +1149,7 @@
    "rotY": 276
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     -3.3,
     -199.2
@@ -1253,7 +1157,7 @@
    "rotY": 96
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     0.4,
     -226
@@ -1269,7 +1173,7 @@
    "rotY": 0
   },
   {
-   "module": "car_parked",
+   "module": "prop_sedan",
    "pos": [
     -1.6,
     -225.7
@@ -1277,7 +1181,7 @@
    "rotY": 190
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     -11.7,
     -250.3
@@ -1293,7 +1197,7 @@
    "rotY": 175
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     20.4,
     -143.8
@@ -1317,7 +1221,7 @@
    "rotY": 177
   },
   {
-   "module": "tree",
+   "module": "prop_tree",
    "pos": [
     59.1,
     -140.7
@@ -1341,7 +1245,7 @@
    "rotY": 177
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     -57.7,
     -145.4
@@ -1349,7 +1253,7 @@
    "rotY": 355
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     -32.4,
     -136.4
@@ -1357,7 +1261,7 @@
    "rotY": 175
   },
   {
-   "module": "car_parked",
+   "module": "prop_sedan",
    "pos": [
     -32.2,
     -138.4
@@ -1365,7 +1269,7 @@
    "rotY": 85
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     -5.9,
     -140.9
@@ -1381,7 +1285,7 @@
    "rotY": 0
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     19.5,
     -132.1
@@ -1389,7 +1293,7 @@
    "rotY": 175
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     45.9,
     -136.9
@@ -1397,7 +1301,7 @@
    "rotY": 357
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     71.4,
     -128.6
@@ -1413,7 +1317,7 @@
    "rotY": 0
   },
   {
-   "module": "car_parked",
+   "module": "prop_sedan",
    "pos": [
     71.5,
     -130.6
@@ -1685,7 +1589,7 @@
    "rotY": 84
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     73.2,
     26
@@ -1693,7 +1597,7 @@
    "rotY": 158
   },
   {
-   "module": "bench",
+   "module": "prop_bench",
    "pos": [
     100.9,
     37.5
@@ -1701,7 +1605,7 @@
    "rotY": 158
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     120.4,
     57.8
@@ -1709,7 +1613,7 @@
    "rotY": 128
   },
   {
-   "module": "bench",
+   "module": "prop_bench",
    "pos": [
     131.3,
     84.3
@@ -1717,7 +1621,7 @@
    "rotY": 106
   },
   {
-   "module": "lamp_post",
+   "module": "prop_lamp",
    "pos": [
     134.4,
     112.8
@@ -1725,7 +1629,7 @@
    "rotY": 84
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -151,
     83.1
@@ -1733,7 +1637,7 @@
    "rotY": 149
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -148.4,
     92.5
@@ -1741,7 +1645,7 @@
    "rotY": 106
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -149.7,
     103.5
@@ -1749,7 +1653,7 @@
    "rotY": 106
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -150.1,
     112.1
@@ -1757,7 +1661,7 @@
    "rotY": 121
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -148.6,
     119.2
@@ -1765,7 +1669,7 @@
    "rotY": 194
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -139.4,
     85
@@ -1773,7 +1677,7 @@
    "rotY": 292
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -142.1,
     94.6
@@ -1781,7 +1685,7 @@
    "rotY": 119
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -142.5,
     102.1
@@ -1789,7 +1693,7 @@
    "rotY": 220
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -139.5,
     112.4
@@ -1797,7 +1701,7 @@
    "rotY": 274
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -139.3,
     118.7
@@ -1805,7 +1709,7 @@
    "rotY": 181
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -131.1,
     82.6
@@ -1813,7 +1717,7 @@
    "rotY": 57
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -132.4,
     91.4
@@ -1821,7 +1725,7 @@
    "rotY": 27
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -130.5,
     101.2
@@ -1829,7 +1733,7 @@
    "rotY": 225
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -132.4,
     110.6
@@ -1837,7 +1741,7 @@
    "rotY": 159
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -133.8,
     118.7
@@ -1845,7 +1749,7 @@
    "rotY": 4
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -124.5,
     82.8
@@ -1853,7 +1757,7 @@
    "rotY": 329
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -124.5,
     91.8
@@ -1861,7 +1765,7 @@
    "rotY": 174
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -122.9,
     102.3
@@ -1869,7 +1773,7 @@
    "rotY": 87
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -124.2,
     109.7
@@ -1877,7 +1781,7 @@
    "rotY": 96
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -124.6,
     118.5
@@ -1885,7 +1789,7 @@
    "rotY": 279
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -113.9,
     83.1
@@ -1893,7 +1797,7 @@
    "rotY": 47
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -114.9,
     109.2
@@ -1901,7 +1805,7 @@
    "rotY": 314
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -112.2,
     119
@@ -1909,7 +1813,7 @@
    "rotY": 78
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -104.6,
     83.2
@@ -1917,7 +1821,7 @@
    "rotY": 184
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -106.4,
     92
@@ -1925,7 +1829,7 @@
    "rotY": 8
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -106.6,
     102.3
@@ -1933,7 +1837,7 @@
    "rotY": 64
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -103.4,
     111.7
@@ -1941,7 +1845,7 @@
    "rotY": 101
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -103.4,
     118.8
@@ -1949,7 +1853,7 @@
    "rotY": 325
   },
   {
-   "module": "bench",
+   "module": "prop_bench",
    "pos": [
     -120,
     88
@@ -1957,7 +1861,7 @@
    "rotY": 180
   },
   {
-   "module": "bench",
+   "module": "prop_bench",
    "pos": [
     -132,
     96
@@ -1965,7 +1869,7 @@
    "rotY": 140
   },
   {
-   "module": "vending_machine",
+   "module": "prop_vending",
    "pos": [
     -114,
     86
@@ -1997,7 +1901,7 @@
    "rotY": 20
   },
   {
-   "module": "vending_machine",
+   "module": "prop_vending",
    "pos": [
     40.5,
     137
@@ -2005,7 +1909,7 @@
    "rotY": 165
   },
   {
-   "module": "bench",
+   "module": "prop_bench",
    "pos": [
     52,
     141
@@ -2061,7 +1965,7 @@
    "rotY": 90
   },
   {
-   "module": "bench",
+   "module": "prop_bench",
    "pos": [
     -135.5,
     -101
@@ -2069,7 +1973,7 @@
    "rotY": 0
   },
   {
-   "module": "bench",
+   "module": "prop_bench",
    "pos": [
     -130.5,
     -101
@@ -2077,7 +1981,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -139,
     -106
@@ -2085,7 +1989,7 @@
    "rotY": 0
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -127,
     -106
@@ -2093,7 +1997,7 @@
    "rotY": 45
   },
   {
-   "module": "tree",
+   "module": "prop_pine",
    "pos": [
     -133,
     -109
@@ -2123,14 +2027,6 @@
     36
    ],
    "rotY": 265
-  },
-  {
-   "module": "owson",
-   "pos": [
-    17,
-    60
-   ],
-   "rotY": 270
   },
   {
    "module": "salon_cinderella",
@@ -2669,14 +2565,6 @@
    "rotY": 264
   },
   {
-   "module": "suburb_a",
-   "pos": [
-    142.5,
-    138.2
-   ],
-   "rotY": 264
-  },
-  {
    "module": "hf_shop",
    "pos": [
     -2.3,
@@ -2691,6 +2579,70 @@
     114.3
    ],
    "rotY": 92
+  },
+  {
+   "module": "prop_bus",
+   "pos": [
+    -4,
+    56
+   ],
+   "rotY": 100
+  },
+  {
+   "module": "warehouse",
+   "pos": [
+    62,
+    136
+   ],
+   "rotY": 250
+  },
+  {
+   "module": "warehouse",
+   "pos": [
+    76,
+    138
+   ],
+   "rotY": 245
+  },
+  {
+   "module": "boat",
+   "pos": [
+    48,
+    152
+   ],
+   "rotY": 210
+  },
+  {
+   "module": "boat",
+   "pos": [
+    56,
+    159
+   ],
+   "rotY": 190
+  },
+  {
+   "module": "bank",
+   "pos": [
+    17,
+    50
+   ],
+   "rotY": 270
+  },
+  {
+   "module": "hospital",
+   "pos": [
+    -30,
+    74
+   ],
+   "rotY": 90
+  },
+  {
+   "module": "superfly",
+   "pos": [
+    152,
+    16
+   ],
+   "rotY": 0
   }
  ]
 }

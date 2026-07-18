@@ -163,6 +163,131 @@
    "glb": "./assets/models/higgsfield/canon/suburb_b.glb",
    "height": 8,
    "source": "Higgsfield sam_3_3d (canon set)"
+  },
+  {
+   "id": "prop_tree",
+   "glb": "./assets/models/higgsfield/props/tree.glb",
+   "height": 7.5,
+   "source": "Higgsfield sam_3_3d (props set)",
+   "cull": 240,
+   "collider": [
+    0.4,
+    3.0,
+    0.4
+   ]
+  },
+  {
+   "id": "prop_pine",
+   "glb": "./assets/models/higgsfield/props/pine.glb",
+   "height": 8.0,
+   "source": "Higgsfield sam_3_3d (props set)",
+   "cull": 240,
+   "collider": [
+    0.4,
+    3.0,
+    0.4
+   ]
+  },
+  {
+   "id": "prop_sedan",
+   "glb": "./assets/models/higgsfield/props/sedan.glb",
+   "height": 1.45,
+   "source": "Higgsfield sam_3_3d (props set)",
+   "cull": 180,
+   "collider": [
+    1.0,
+    1.45,
+    2.2
+   ]
+  },
+  {
+   "id": "prop_bus",
+   "glb": "./assets/models/higgsfield/props/bus.glb",
+   "height": 3.0,
+   "source": "Higgsfield sam_3_3d (props set)",
+   "cull": 280,
+   "collider": [
+    1.4,
+    3.0,
+    5.5
+   ]
+  },
+  {
+   "id": "prop_vending",
+   "glb": "./assets/models/higgsfield/props/vending.glb",
+   "height": 1.9,
+   "source": "Higgsfield sam_3_3d (props set)",
+   "cull": 130,
+   "collider": [
+    0.6,
+    1.9,
+    0.5
+   ]
+  },
+  {
+   "id": "prop_bench",
+   "glb": "./assets/models/higgsfield/props/bench.glb",
+   "height": 0.85,
+   "source": "Higgsfield sam_3_3d (props set)",
+   "cull": 110,
+   "collider": [
+    0.9,
+    0.85,
+    0.4
+   ]
+  },
+  {
+   "id": "prop_lamp",
+   "glb": "./assets/models/higgsfield/props/lamp.glb",
+   "height": 5.0,
+   "source": "Higgsfield sam_3_3d (props set)",
+   "cull": 190,
+   "collider": [
+    0.3,
+    5.0,
+    0.3
+   ]
+  },
+  {
+   "id": "warehouse",
+   "glb": "./assets/models/higgsfield/props/warehouse.glb",
+   "height": 7.0,
+   "source": "Higgsfield sam_3_3d (props set)"
+  },
+  {
+   "id": "boat",
+   "glb": "./assets/models/higgsfield/props/boat.glb",
+   "height": 3.5,
+   "source": "Higgsfield sam_3_3d (props set)",
+   "cull": 320,
+   "collider": [
+    1.5,
+    3.5,
+    4.0
+   ]
+  },
+  {
+   "id": "hospital",
+   "glb": "./assets/models/higgsfield/props/hospital.glb",
+   "height": 15.0,
+   "source": "Higgsfield sam_3_3d (props set)"
+  },
+  {
+   "id": "bank",
+   "glb": "./assets/models/higgsfield/props/bank.glb",
+   "height": 9.0,
+   "source": "Higgsfield sam_3_3d (props set)"
+  },
+  {
+   "id": "superfly",
+   "glb": "./assets/models/higgsfield/props/superfly.glb",
+   "height": 40.0,
+   "source": "Higgsfield sam_3_3d (props set)",
+   "collider": [
+    4.0,
+    40.0,
+    4.0
+   ]
   }
  ]
 }
