@@ -4099,10 +4099,18 @@
   {
    "module": "futatsumori_tunnel",
    "pos": [
-    -110,
-    -126
+    -113.1,
+    -127.4
    ],
    "rotY": 336
+  },
+  {
+   "module": "futatsumori_tunnel",
+   "pos": [
+    -106.9,
+    -124.6
+   ],
+   "rotY": 156
   }
  ]
 }
