@@ -4079,6 +4079,22 @@
     82.3
    ],
    "rotY": 149
+  },
+  {
+   "module": "boyoyoing_cape",
+   "pos": [
+    148,
+    124
+   ],
+   "rotY": 210
+  },
+  {
+   "module": "town_sign",
+   "pos": [
+    4,
+    38
+   ],
+   "rotY": 200
   }
  ]
 }

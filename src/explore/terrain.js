@@ -7,6 +7,7 @@
 // KTX2 sets replace them via setSplatTextures() without touching geometry.
 import * as THREE from 'three';
 import { getGroundHeight, WORLD_HALF, SEA_LEVEL } from './heightfield.js';
+import { mirrorTileInto } from './materials.js';
 
 const TILE = 64, TILES = (WORLD_HALF * 2) / TILE; // 8x8
 const SEG_NEAR = 48, SEG_FAR = 12, LOD_DIST = 150;
@@ -123,6 +124,23 @@ export function createTerrain() {
     if (rock) uniforms.tRock.value = rock;
     if (sand) uniforms.tSand.value = sand;
   }
+
+  // Higgsfield-generated splat textures load in over the stand-ins
+  function loadTiled(url, apply) {
+    const img = new Image();
+    img.onload = () => {
+      const c = document.createElement('canvas'); c.width = c.height = 1024;
+      mirrorTileInto(c, img);
+      const t = new THREE.CanvasTexture(c);
+      t.colorSpace = THREE.SRGBColorSpace;
+      t.wrapS = t.wrapT = THREE.RepeatWrapping;
+      t.anisotropy = 4;
+      apply(t);
+    };
+    img.src = url;
+  }
+  loadTiled('./assets/textures/grass.png', t => setSplatTextures({ grass: t }));
+  loadTiled('./assets/textures/rock.png', t => setSplatTextures({ rock: t }));
 
   return { group, update, setSplatTextures };
 }

@@ -183,6 +183,15 @@ const texFoliage = canvasTex(256, (g, px) => { // leafy mottle; tinted
 
 // full-colour road surface: asphalt + dashed centreline + edge lines.
 // buildRoad UVs: u = 0..1 across the width, v = one repeat per ~10 m.
+function drawRoadMarkings(g, px) {
+  const line = (x, w, a) => { g.fillStyle = `rgba(228,226,214,${a})`; g.fillRect(x - w / 2, 0, w, px); };
+  line(px * 0.085, px * 0.012, 0.5);   // edge lines
+  line(px * 0.915, px * 0.012, 0.5);
+  for (const y of [px * 0.06, px * 0.56]) { // centre dashes: 2 per 10 m repeat
+    g.fillStyle = 'rgba(232,230,218,0.6)';
+    g.fillRect(px / 2 - px * 0.009, y, px * 0.018, px * 0.19);
+  }
+}
 const texRoad = canvasTex(512, (g, px) => {
   const rnd = rng(808);
   g.fillStyle = '#3d3d42'; g.fillRect(0, 0, px, px);
@@ -191,14 +200,33 @@ const texRoad = canvasTex(512, (g, px) => {
     g.fillStyle = `rgba(${v},${v},${v + 4},${0.25 + rnd() * 0.3})`;
     g.fillRect(rnd() * px, rnd() * px, 1 + rnd() * 2, 1 + rnd() * 2);
   }
-  const line = (x, w, a) => { g.fillStyle = `rgba(228,226,214,${a})`; g.fillRect(x - w / 2, 0, w, px); };
-  line(px * 0.085, px * 0.012, 0.5);   // edge lines
-  line(px * 0.915, px * 0.012, 0.5);
-  for (const y of [px * 0.06, px * 0.56]) { // centre dashes: 2 per 10 m repeat
-    g.fillStyle = 'rgba(232,230,218,0.6)';
-    g.fillRect(px / 2 - px * 0.009, y, px * 0.018, px * 0.19);
-  }
+  drawRoadMarkings(g, px);
 });
+
+// mirror-tile a source image 2x2 into a canvas: any generated texture
+// becomes seamlessly repeatable regardless of its own edges
+export function mirrorTileInto(canvas, img) {
+  const g = canvas.getContext('2d'), s = canvas.width / 2;
+  for (const ix of [0, 1]) for (const iy of [0, 1]) {
+    g.save();
+    g.translate(ix * s + (ix ? s : 0), iy * s + (iy ? s : 0));
+    g.scale(ix ? -1 : 1, iy ? -1 : 1);
+    g.drawImage(img, 0, 0, s, s);
+    g.restore();
+  }
+}
+
+// swap the Higgsfield-generated asphalt in under the markings when present
+{
+  const img = new Image();
+  img.onload = () => {
+    const c = texRoad.userData.canvas;
+    mirrorTileInto(c, img);
+    drawRoadMarkings(c.getContext('2d'), c.width);
+    texRoad.needsUpdate = true;
+  };
+  img.src = './assets/textures/asphalt.png';
+}
 
 const M = (opts) => new THREE.MeshStandardMaterial(opts);
 const NM = (opts, srcTex, strength, scale = 1) => {

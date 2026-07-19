@@ -297,6 +297,29 @@
     40.0,
     4.0
    ]
+  },
+  {
+   "id": "boyoyoing_cape",
+   "glb": "./assets/models/higgsfield/canon/boyoyoing.glb",
+   "height": 6.5,
+   "collider": [
+    2.5,
+    6.5,
+    2.5
+   ],
+   "source": "Higgsfield sam_3_3d"
+  },
+  {
+   "id": "town_sign",
+   "glb": "./assets/models/higgsfield/canon/town_sign.glb",
+   "height": 2.6,
+   "collider": [
+    1.6,
+    2.6,
+    0.5
+   ],
+   "cull": 220,
+   "source": "Higgsfield sam_3_3d"
   }
  ]
 }
