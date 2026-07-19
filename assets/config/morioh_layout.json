@@ -201,10 +201,6 @@
     [
      -150,
      -150
-    ],
-    [
-     -157,
-     -155.5
     ]
    ]
   },
@@ -3215,14 +3211,6 @@
   {
    "module": "prop_pine",
    "pos": [
-    -172.7,
-    -177.2
-   ],
-   "rotY": 46
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
     -174.8,
     -120.6
    ],
@@ -4101,108 +4089,12 @@
    "rotY": 200
   },
   {
-   "module": "futatsumori_tunnel",
-   "pos": [
-    -158,
-    -156.5
-   ],
-   "rotY": 141
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
-    -167.2,
-    -156.3
-   ],
-   "rotY": 0
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
-    -164.2,
-    -161.6
-   ],
-   "rotY": 77
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
-    -159.6,
-    -165.6
-   ],
-   "rotY": 154
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
-    -172.4,
-    -157.9
-   ],
-   "rotY": 231
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
-    -169.3,
-    -163.2
-   ],
-   "rotY": 308
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
-    -164.8,
-    -167.2
-   ],
-   "rotY": 25
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
-    -173.5,
-    -162.8
-   ],
-   "rotY": 102
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
-    -169.1,
-    -168.2
-   ],
-   "rotY": 179
-  },
-  {
    "module": "prop_pine",
    "pos": [
     -166.0,
     -151.4
    ],
    "rotY": 256
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
-    -154.6,
-    -165.4
-   ],
-   "rotY": 333
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
-    -171.3,
-    -154.5
-   ],
-   "rotY": 50
-  },
-  {
-   "module": "prop_pine",
-   "pos": [
-    -158.6,
-    -169.9
-   ],
-   "rotY": 127
   }
  ]
 }

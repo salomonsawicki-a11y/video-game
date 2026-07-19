@@ -320,17 +320,6 @@
    ],
    "cull": 220,
    "source": "Higgsfield sam_3_3d"
-  },
-  {
-   "id": "futatsumori_tunnel",
-   "glb": "./assets/models/higgsfield/canon/futatsumori.glb",
-   "height": 9.0,
-   "collider": [
-    0.6,
-    2.0,
-    0.6
-   ],
-   "source": "Higgsfield sam_3_3d"
   }
  ]
 }
