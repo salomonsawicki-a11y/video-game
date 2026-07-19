@@ -4095,6 +4095,14 @@
     38
    ],
    "rotY": 200
+  },
+  {
+   "module": "futatsumori_tunnel",
+   "pos": [
+    -110,
+    -126
+   ],
+   "rotY": 336
   }
  ]
 }
